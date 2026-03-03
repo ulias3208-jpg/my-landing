@@ -11,8 +11,10 @@
   <meta property="og:description" content="Помогаю расти в доходах через автоматизацию, оптимизацию работы и создание цифровых решений. Лендинги от 5 000 ₽." />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ru_RU" />
+  <meta property="og:image" content="img/hero.jpg" />
 
   <meta name="theme-color" content="#0A0A0F" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x2B50;</text></svg>" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -1940,7 +1942,7 @@ body:not(:hover) .cursor-outline { opacity: 0; }
         <!-- Project 1: Tutor Landing -->
         <div class="card work-card reveal">
           <div class="work-card__thumb">
-            <img src="img/work-tutor.png" alt="Лендинг репетитора по истории" loading="lazy" />
+            <img src="img/work-tutor.png" alt="Лендинг репетитора по истории" width="600" height="200" loading="lazy" />
           </div>
           <div class="work-card__body">
             <span class="work-card__tag">Лендинг</span>
@@ -1966,7 +1968,7 @@ body:not(:hover) .cursor-outline { opacity: 0; }
         <!-- Project 2: Digital Business Card -->
         <div class="card work-card reveal">
           <div class="work-card__thumb">
-            <img src="img/work-card.png" alt="Виртуальная визитка ведущего" loading="lazy" />
+            <img src="img/work-card.png" alt="Виртуальная визитка ведущего" width="600" height="200" loading="lazy" />
           </div>
           <div class="work-card__body">
             <span class="work-card__tag">Digital-визитка</span>
@@ -1992,7 +1994,7 @@ body:not(:hover) .cursor-outline { opacity: 0; }
         <!-- Project 3: Neurovisual Landing -->
         <div class="card work-card reveal">
           <div class="work-card__thumb">
-            <img src="img/work-neuro.png" alt="Лендинг интенсива Нейро-Визуал" loading="lazy" />
+            <img src="img/work-neuro.png" alt="Лендинг интенсива Нейро-Визуал" width="600" height="200" loading="lazy" />
           </div>
           <div class="work-card__body">
             <span class="work-card__tag">Продуктовый лендинг</span>
@@ -2018,7 +2020,7 @@ body:not(:hover) .cursor-outline { opacity: 0; }
         <!-- Project 4: Decant Pro -->
         <div class="card work-card reveal">
           <div class="work-card__thumb">
-            <img src="img/work-decant.png" alt="Decant Pro — калькулятор для парфюмерных стилистов" loading="lazy" />
+            <img src="img/work-decant.png" alt="Decant Pro — калькулятор для парфюмерных стилистов" width="600" height="200" loading="lazy" />
           </div>
           <div class="work-card__body">
             <span class="work-card__tag">Веб-приложение</span>
@@ -2721,7 +2723,7 @@ body:not(:hover) .cursor-outline { opacity: 0; }
     fetch(TG_API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: TG_CHAT, text: text, parse_mode: '' })
+      body: JSON.stringify({ chat_id: TG_CHAT, text: text })
     })
     .then(r => r.json())
     .then(data => {
@@ -2821,7 +2823,7 @@ body:not(:hover) .cursor-outline { opacity: 0; }
   });
 })();
 
-/* 10. Text typing reveal for hero title */
+/* 10. Hero title fade-in */
 (function initTypeReveal() {
   const title = document.querySelector('.hero__title');
   if (!title) return;
@@ -2831,10 +2833,6 @@ body:not(:hover) .cursor-outline { opacity: 0; }
       if (entry.isIntersecting) {
         title.style.transition = 'opacity 0.6s ease';
         title.style.opacity = '1';
-        const words = title.querySelectorAll('.reveal-word');
-        words.forEach((w, i) => {
-          w.style.animationDelay = (i * 0.08) + 's';
-        });
         obs.unobserve(title);
       }
     });
