@@ -1,0 +1,2847 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Юлия Самарина — AI-ментор для экспертов и брендов | Сайты, Mini Apps, AI-агенты</title>
+  <meta name="description" content="AI-ментор для экспертов и брендов, вайбкодер. Лендинги от 5 000 ₽, сайты, Telegram Mini Apps, CRM, AI-агенты. Работаю по всему миру." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Юлия Самарина — AI-ментор | Сайты, Mini Apps, AI-агенты" />
+  <meta property="og:description" content="Помогаю расти в доходах через автоматизацию, оптимизацию работы и создание цифровых решений. Лендинги от 5 000 ₽." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ru_RU" />
+
+  <meta name="theme-color" content="#0A0A0F" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <!-- FAQ Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Сколько стоят ваши услуги?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Лендинги — от 5 000 ₽, сайты — от 30 000 ₽, Telegram Mini Apps — от 40 000 ₽, AI-агенты — от 20 000 ₽. После первого созвона составляю точное КП. Предоплата 50%, остаток при сдаче проекта."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Сколько времени занимает разработка?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Лендинги — 5–9 дней, Telegram Mini Apps — 4–6 недель, AI-агенты — 7–20 дней. Сроки фиксирую в КП и придерживаюсь их."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Работаете ли вы с клиентами из других городов и стран?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Да, работаю полностью удалённо. Среди клиентов — компании из России, Казахстана, ОАЭ и Европы."
+        }
+      }
+    ]
+  }
+  </script>
+
+<style>
+/* ============================================================
+   LANDING PAGE — Dark AI Theme (Single-file build)
+   ============================================================ */
+
+/* ==================== VARIABLES ==================== */
+:root {
+  --bg:             #0A0A0F;
+  --surface:        #0f1117;
+  --surface-2:      #161b27;
+  --surface-3:      #1c2333;
+  --border:         rgba(255, 255, 255, 0.07);
+  --border-accent:  rgba(167, 139, 250, 0.25);
+
+  --accent:         #A78BFA;
+  --accent-2:       #38BDF8;
+  --accent-glow:    rgba(167, 139, 250, 0.15);
+  --accent-2-glow:  rgba(56, 189, 248, 0.12);
+
+  --text:           #F1F5F9;
+  --text-muted:     #94A3B8;
+  --text-dim:       #64748B;
+
+  --success:        #10B981;
+  --warning:        #F59E0B;
+  --danger:         #EF4444;
+
+  --radius-sm:      8px;
+  --radius:         16px;
+  --radius-lg:      24px;
+  --radius-xl:      32px;
+
+  --shadow-card:    0 1px 3px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.2);
+  --shadow-hover:   0 0 0 1px rgba(167,139,250,0.15), 0 24px 48px rgba(0,0,0,0.4);
+
+  --transition:     all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.15s ease;
+
+  --font-head:      'Space Grotesk', system-ui, sans-serif;
+  --font-body:      'Inter', system-ui, sans-serif;
+
+  --container:      1200px;
+  --section-gap:    120px;
+}
+
+/* ==================== RESET ==================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  cursor: none;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { cursor: none; background: none; border: none; font: inherit; }
+ul { list-style: none; }
+input, textarea, button { font-family: var(--font-body); }
+
+/* ==================== CUSTOM CURSOR ==================== */
+.cursor-dot,
+.cursor-outline {
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition-property: opacity, transform, border-color;
+  transition-duration: 0.2s;
+}
+.cursor-dot {
+  width: 6px; height: 6px;
+  background: var(--accent);
+}
+.cursor-outline {
+  width: 36px; height: 36px;
+  border: 1.5px solid rgba(167, 139, 250, 0.5);
+  transition-duration: 0.08s;
+}
+body:not(:hover) .cursor-dot,
+body:not(:hover) .cursor-outline { opacity: 0; }
+
+/* ==================== UTILITIES ==================== */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+.gradient-text {
+  background: linear-gradient(270deg, var(--accent), var(--accent-2), #E879F9, var(--accent));
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 6s ease infinite;
+}
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ==================== BUTTONS ==================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: var(--radius);
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+  transition: var(--transition);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.2s;
+  background: rgba(255,255,255,0.06);
+}
+.btn:hover::after { opacity: 1; }
+
+.btn--primary {
+  background: linear-gradient(135deg, var(--accent), #7C3AED, var(--accent-2));
+  background-size: 200% 200%;
+  color: #fff;
+  box-shadow: 0 0 24px var(--accent-glow);
+  animation: btnGlow 4s ease infinite;
+}
+@keyframes btnGlow {
+  0%, 100% { background-position: 0% 50%; box-shadow: 0 0 24px var(--accent-glow); }
+  50%      { background-position: 100% 50%; box-shadow: 0 0 32px rgba(56,189,248,0.25); }
+}
+.btn--primary:hover {
+  box-shadow: 0 0 48px rgba(167,139,250,0.45), 0 0 80px rgba(56,189,248,0.15);
+  transform: translateY(-2px) scale(1.02);
+  filter: brightness(1.1);
+}
+.btn--primary:active { transform: scale(0.97); filter: brightness(0.95); }
+
+.btn--ghost {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+.btn--ghost:hover {
+  border-color: rgba(167,139,250,0.5);
+  color: var(--text);
+  background: rgba(167,139,250,0.08);
+  box-shadow: 0 0 24px rgba(167,139,250,0.1);
+  transform: translateY(-1px);
+}
+
+.btn--sm {
+  padding: 10px 20px;
+  font-size: 0.875rem;
+  border-radius: var(--radius-sm);
+}
+
+.btn--full { width: 100%; justify-content: center; }
+
+/* ==================== BADGE ==================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  background: rgba(167,139,250,0.1);
+  border: 1px solid rgba(167,139,250,0.2);
+}
+.badge__dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--success);
+  animation: pulse 2s infinite;
+}
+
+/* ==================== SECTION BASE ==================== */
+.section { padding: var(--section-gap) 0; position: relative; }
+
+.section-head {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 64px;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: var(--font-head);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.section-desc {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* ==================== GLASS CARD ==================== */
+.card {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: var(--transition);
+  box-shadow: var(--shadow-card);
+}
+.card:hover {
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-hover), 0 0 40px rgba(167,139,250,0.06);
+  transform: translateY(-6px);
+}
+
+/* ==================== NAV ==================== */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 16px 0;
+  transition: var(--transition);
+}
+.nav.scrolled {
+  background: rgba(10, 10, 15, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+}
+.nav__inner {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.nav__logo {
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  flex-shrink: 0;
+}
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex: 1;
+}
+.nav__links a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: var(--transition-fast);
+  position: relative;
+}
+.nav__links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0; right: 0;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.nav__links a:hover { color: var(--text); }
+.nav__links a:hover::after { transform: scaleX(1); }
+.nav__cta { margin-left: auto; }
+.nav__burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+  margin-left: auto;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+}
+.nav__burger span {
+  display: block;
+  width: 22px; height: 1.5px;
+  background: var(--text-muted);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+/* ==================== HERO ==================== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 80px;
+}
+.hero__dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+  pointer-events: none;
+}
+.hero__orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(80px);
+}
+.hero__orb--1 {
+  width: 700px; height: 700px;
+  top: -200px; left: -100px;
+  background: radial-gradient(circle, rgba(167,139,250,0.18) 0%, transparent 70%);
+  animation: orbFloat1 18s ease-in-out infinite;
+}
+.hero__orb--2 {
+  width: 600px; height: 600px;
+  bottom: -150px; right: -100px;
+  background: radial-gradient(circle, rgba(56,189,248,0.14) 0%, transparent 70%);
+  animation: orbFloat2 22s ease-in-out infinite;
+}
+.hero__inner {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  position: relative;
+  z-index: 1;
+  padding: 80px 24px;
+  max-width: var(--container);
+}
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+  flex: 1;
+  min-width: 0;
+}
+.hero__photo {
+  flex-shrink: 0;
+  width: 380px;
+  position: relative;
+  transition: transform 0.15s ease;
+  will-change: transform;
+}
+.hero__photo img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4),
+              0 0 80px rgba(167, 139, 250, 0.08);
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+              box-shadow 0.6s ease;
+}
+.hero__photo:hover img {
+  transform: scale(1.03) translateY(-4px);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.5),
+              0 0 120px rgba(167, 139, 250, 0.15);
+}
+.hero__photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(to top, var(--bg) 0%, transparent 30%);
+  pointer-events: none;
+}
+
+.hero__title {
+  font-family: var(--font-head);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  max-width: 700px;
+}
+
+.hero__subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: var(--text-muted);
+  max-width: 560px;
+  line-height: 1.65;
+}
+
+.hero__actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hero__stats {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-top: 16px;
+  flex-wrap: wrap;
+}
+.hero__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.hero__stat-num {
+  font-family: var(--font-head);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+.hero__stat-label {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  letter-spacing: 0.03em;
+  margin-top: 4px;
+}
+.hero__stat-sep {
+  width: 1px;
+  height: 36px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+/* ==================== SERVICES ==================== */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.service-card {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.service-card:hover::before { opacity: 1; }
+
+.service-card--featured {
+  border-color: rgba(167,139,250,0.2);
+  background: rgba(167,139,250,0.04);
+}
+.service-card--featured::before { opacity: 0.6; }
+
+.service-card__badge {
+  position: absolute;
+  top: 20px; right: 20px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: rgba(167,139,250,0.15);
+  color: var(--accent);
+  border: 1px solid rgba(167,139,250,0.25);
+}
+.service-card__icon {
+  width: 48px; height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  background: rgba(167,139,250,0.1);
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.service-card__icon svg { width: 24px; height: 24px; }
+.service-card:hover .service-card__icon {
+  background: rgba(167,139,250,0.2);
+  box-shadow: 0 0 20px rgba(167,139,250,0.15);
+  transform: scale(1.1);
+  transition: var(--transition);
+}
+
+.service-card__tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.service-card__title {
+  font-family: var(--font-head);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.service-card__desc {
+  color: var(--text-muted);
+  font-size: 0.925rem;
+  line-height: 1.65;
+  flex: 1;
+}
+.service-card__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.service-card__list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+.service-card__list li::before {
+  content: '\2713';
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.service-card__cta {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent);
+  transition: gap 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+}
+.service-card__cta:hover { gap: 8px; }
+
+/* ==================== NOT FOR ==================== */
+.not-for {
+  max-width: 720px;
+  margin: 64px auto 0;
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  background: rgba(239, 68, 68, 0.04);
+  border: 1px solid rgba(239, 68, 68, 0.12);
+}
+.not-for__title {
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+.not-for__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.not-for__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.925rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.not-for__list li::before {
+  content: '\2715';
+  color: rgba(239, 68, 68, 0.7);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ==================== WORK / PORTFOLIO ==================== */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.work-card {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.work-card__thumb {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.work-card__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.4s ease;
+}
+.work-card:hover .work-card__thumb img {
+  transform: scale(1.05);
+}
+.work-card__thumb span {
+  font-family: var(--font-head);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.25);
+  position: relative;
+  z-index: 2;
+}
+.work-card__thumb--accent {
+  background: linear-gradient(135deg, #0C4A6E 0%, #0369A1 50%, #38BDF8 100%);
+}
+.work-card__thumb--accent2 {
+  background: linear-gradient(135deg, #1E1B4B 0%, #4C1D95 50%, #7C3AED 100%);
+}
+.work-card__thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(10,10,15,0.7));
+  z-index: 1;
+}
+.work-card__body {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+.work-card__tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.work-card__title {
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+.work-card__desc {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.65;
+  flex: 1;
+}
+.work-card__metrics {
+  display: flex;
+  gap: 0;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+  margin-top: 4px;
+}
+.metric {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-right: 16px;
+}
+.metric:not(:last-child) {
+  border-right: 1px solid var(--border);
+  margin-right: 16px;
+}
+.metric__num {
+  font-family: var(--font-head);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+  line-height: 1;
+}
+.metric__label {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  line-height: 1.3;
+}
+
+/* ==================== PROCESS ==================== */
+.process-list {
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.process-list::before {
+  content: '';
+  position: absolute;
+  left: 31px;
+  top: 64px;
+  bottom: 64px;
+  width: 1px;
+  background: linear-gradient(to bottom,
+    rgba(167,139,250,0.5) 0%,
+    rgba(56,189,248,0.3) 60%,
+    transparent 100%
+  );
+}
+.process-step {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  padding: 28px 0;
+}
+.process-step:not(:last-child) {
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.process-step__num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  font-family: var(--font-head);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: rgba(167,139,250,0.08);
+  border: 1px solid rgba(167,139,250,0.2);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  transition: var(--transition);
+}
+.process-step:hover .process-step__num {
+  background: rgba(167,139,250,0.15);
+  border-color: rgba(167,139,250,0.4);
+  box-shadow: 0 0 24px rgba(167,139,250,0.2);
+  transform: scale(1.08);
+}
+.process-step__body h3 {
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+.process-step__body p {
+  color: var(--text-muted);
+  font-size: 0.925rem;
+  line-height: 1.7;
+}
+.process-cta {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 48px;
+  flex-wrap: wrap;
+}
+.process-cta__note {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+/* ==================== GUARANTEE ==================== */
+.guarantee-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.guarantee-card {
+  text-align: center;
+  padding: 28px 20px;
+  border-radius: var(--radius-lg);
+  background: rgba(16, 185, 129, 0.04);
+  border: 1px solid rgba(16, 185, 129, 0.12);
+  transition: var(--transition);
+}
+.guarantee-card:hover {
+  border-color: rgba(16, 185, 129, 0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(16, 185, 129, 0.08);
+}
+.guarantee-card:hover .guarantee-card__icon {
+  background: rgba(16, 185, 129, 0.15);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.12);
+  transform: scale(1.1);
+  transition: var(--transition);
+}
+.guarantee-card__icon {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.08);
+  margin-inline: auto;
+}
+.guarantee-card__title {
+  font-family: var(--font-head);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+.guarantee-card__desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* ==================== ABOUT ==================== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.about-text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.about-text .section-title { margin-bottom: 0; }
+.about-text p {
+  color: var(--text-muted);
+  font-size: 0.975rem;
+  line-height: 1.75;
+}
+.about-text strong { color: var(--text); font-weight: 600; }
+.about-availability {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  background: rgba(16, 185, 129, 0.06);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+.status-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--success);
+  flex-shrink: 0;
+  animation: pulse 2.5s infinite;
+}
+
+/* About Photo */
+.about-photo {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.about-photo img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  object-position: center 20%;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+.about-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(to top, var(--bg) 0%, transparent 25%);
+  pointer-events: none;
+}
+
+/* Bento Grid */
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.bento-card {
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+.bento-card:hover {
+  border-color: var(--border-accent);
+  background: rgba(167,139,250,0.04);
+}
+.bento-card--stack { grid-column: span 2; }
+.bento-num {
+  font-family: var(--font-head);
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--accent);
+  line-height: 1;
+}
+.bento-label {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+.bento-card--rating .bento-num { color: var(--warning); }
+.stars {
+  color: var(--warning);
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+.stack-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+.stack-tags span {
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: rgba(167,139,250,0.08);
+  border: 1px solid rgba(167,139,250,0.15);
+  color: var(--accent);
+}
+
+/* ==================== REVIEWS ==================== */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.review-card {
+  position: relative;
+  padding: 28px;
+}
+.review-card::before {
+  content: '\201C';
+  font-size: 80px;
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0.12;
+  position: absolute;
+  top: 10px;
+  left: 22px;
+  font-family: Georgia, serif;
+  pointer-events: none;
+}
+.review-card__text {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+.review-card__author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+.review-card__avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+}
+.review-card__name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.review-card__stars {
+  color: var(--warning);
+  font-size: 0.8rem;
+  margin-top: 3px;
+  letter-spacing: 1px;
+}
+
+/* ==================== FAQ ==================== */
+.faq-list {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+.faq-item:first-child {
+  border-top: 1px solid var(--border);
+}
+.faq-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 0;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text);
+  transition: color 0.2s;
+}
+.faq-q:hover { color: var(--accent); }
+.faq-q[aria-expanded="true"] { color: var(--accent); }
+.faq-chevron {
+  width: 20px; height: 20px;
+  color: var(--text-dim);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.faq-q[aria-expanded="true"] .faq-chevron {
+  transform: rotate(180deg);
+  color: var(--accent);
+}
+.faq-a {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.faq-a.open { max-height: 300px; }
+.faq-a p {
+  padding-bottom: 22px;
+  color: var(--text-muted);
+  font-size: 0.925rem;
+  line-height: 1.75;
+}
+
+/* ==================== CONTACT ==================== */
+.section--contact {
+  position: relative;
+  overflow: hidden;
+}
+.contact-orb {
+  position: absolute;
+  width: 800px; height: 800px;
+  bottom: -400px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(167,139,250,0.08) 0%, transparent 70%);
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(40px);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.contact-info .section-title { margin-bottom: 0; }
+.contact-info__desc {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: color 0.2s;
+  padding: 8px 0;
+}
+.contact-link svg {
+  width: 18px; height: 18px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.contact-link:hover { color: var(--text); }
+.contact-note {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+/* What happens next */
+.contact-next {
+  padding: 20px;
+  border-radius: var(--radius);
+  background: rgba(167,139,250,0.04);
+  border: 1px solid rgba(167,139,250,0.1);
+}
+.contact-next__title {
+  font-family: var(--font-head);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+.contact-next__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.contact-next__list li {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  display: flex;
+  gap: 8px;
+}
+.contact-next__list li::before {
+  content: attr(data-step);
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* Contact Form */
+.contact-form-wrap {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  position: relative;
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+.form-group input,
+.form-group textarea {
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 0.925rem;
+  line-height: 1.5;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  resize: vertical;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--text-dim); }
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: rgba(167,139,250,0.5);
+  box-shadow: 0 0 0 3px rgba(167,139,250,0.1);
+  background: rgba(167,139,250,0.04);
+}
+.form-note {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  text-align: center;
+}
+
+/* ==================== SECTION GLOWS ==================== */
+.section::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(ellipse, rgba(167,139,250,0.04) 0%, transparent 70%);
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+/* Floating particles background */
+.hero__dots {
+  animation: dotsFloat 30s linear infinite;
+}
+@keyframes dotsFloat {
+  0%   { background-position: 0 0; }
+  100% { background-position: 32px 32px; }
+}
+
+/* Nav link active indicator glow */
+.nav__links a:hover::after {
+  box-shadow: 0 2px 8px rgba(167,139,250,0.4);
+}
+
+/* Contact link hover glow */
+.contact-link:hover svg { filter: drop-shadow(0 0 6px rgba(167,139,250,0.5)); }
+
+/* Stack tags hover */
+.stack-tags span {
+  transition: var(--transition);
+}
+.stack-tags span:hover {
+  background: rgba(167,139,250,0.2);
+  border-color: rgba(167,139,250,0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(167,139,250,0.1);
+}
+
+/* Review card inner glow on hover */
+.review-card:hover::before {
+  opacity: 0.25;
+}
+
+/* ==================== BACK TO TOP ==================== */
+.back-to-top {
+  position: fixed;
+  bottom: 100px;
+  right: 28px;
+  z-index: 90;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: rgba(167, 139, 250, 0.12);
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.8);
+  transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s, box-shadow 0.3s;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+.back-to-top:hover {
+  background: rgba(167, 139, 250, 0.25);
+  border-color: rgba(167, 139, 250, 0.5);
+  box-shadow: 0 0 24px rgba(167, 139, 250, 0.2);
+  transform: translateY(-3px) scale(1.08);
+}
+.back-to-top:active {
+  transform: scale(0.92);
+}
+.back-to-top svg {
+  width: 20px; height: 20px;
+  transition: transform 0.3s ease;
+}
+.back-to-top:hover svg {
+  transform: translateY(-2px);
+}
+
+/* ==================== FORM SUCCESS OVERLAY ==================== */
+.form-success-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: rgba(15, 17, 23, 0.97);
+  border-radius: var(--radius-lg);
+  z-index: 10;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+}
+.form-success-overlay.active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+/* Animated checkmark circle */
+.success-checkmark {
+  width: 80px; height: 80px;
+  position: relative;
+}
+.success-checkmark__circle {
+  stroke: var(--success);
+  stroke-width: 2;
+  fill: none;
+  stroke-dasharray: 251;
+  stroke-dashoffset: 251;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+.form-success-overlay.active .success-checkmark__circle {
+  animation: drawCircle 0.6s 0.1s ease forwards;
+}
+@keyframes drawCircle {
+  to { stroke-dashoffset: 0; }
+}
+.success-checkmark__check {
+  stroke: var(--success);
+  stroke-width: 3;
+  fill: none;
+  stroke-dasharray: 36;
+  stroke-dashoffset: 36;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.form-success-overlay.active .success-checkmark__check {
+  animation: drawCheck 0.4s 0.6s ease forwards;
+}
+@keyframes drawCheck {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Success glow ring */
+.success-checkmark::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.15), transparent 70%);
+  opacity: 0;
+}
+.form-success-overlay.active .success-checkmark::after {
+  animation: glowPulse 1.5s 0.5s ease infinite;
+}
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Particles */
+.success-particles {
+  position: absolute;
+  width: 200px; height: 200px;
+  pointer-events: none;
+}
+.success-particle {
+  position: absolute;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  top: 50%; left: 50%;
+  opacity: 0;
+}
+.form-success-overlay.active .success-particle {
+  animation: particleBurst 0.8s 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+.success-particle:nth-child(1) { background: var(--accent); --px: -60px; --py: -50px; }
+.success-particle:nth-child(2) { background: var(--accent-2); --px: 55px; --py: -45px; animation-delay: 0.55s !important; }
+.success-particle:nth-child(3) { background: var(--success); --px: -50px; --py: 55px; animation-delay: 0.6s !important; }
+.success-particle:nth-child(4) { background: #E879F9; --px: 60px; --py: 50px; animation-delay: 0.65s !important; }
+.success-particle:nth-child(5) { background: var(--warning); --px: -30px; --py: -65px; animation-delay: 0.58s !important; }
+.success-particle:nth-child(6) { background: var(--accent); --px: 40px; --py: 60px; animation-delay: 0.62s !important; }
+.success-particle:nth-child(7) { background: var(--accent-2); --px: -65px; --py: 10px; animation-delay: 0.52s !important; }
+.success-particle:nth-child(8) { background: #E879F9; --px: 65px; --py: -15px; animation-delay: 0.68s !important; }
+@keyframes particleBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--px), var(--py)) scale(0); }
+}
+
+.success-title {
+  font-family: var(--font-head);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+  opacity: 0;
+  transform: translateY(10px);
+}
+.form-success-overlay.active .success-title {
+  animation: fadeUp 0.4s 0.7s ease forwards;
+}
+.success-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.6;
+  max-width: 280px;
+  opacity: 0;
+  transform: translateY(10px);
+}
+.form-success-overlay.active .success-desc {
+  animation: fadeUp 0.4s 0.85s ease forwards;
+}
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==================== STICKY TELEGRAM ==================== */
+.sticky-tg {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #2AABEE, #229ED9);
+  color: #fff;
+  font-family: var(--font-head);
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 8px 32px rgba(42, 171, 238, 0.3);
+  transition: var(--transition);
+  text-decoration: none;
+  overflow: visible;
+}
+.sticky-tg::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #2AABEE, #229ED9);
+  opacity: 0.5;
+  animation: tgPulse 2.5s ease-in-out infinite;
+  z-index: -1;
+  filter: blur(12px);
+}
+@keyframes tgPulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50%      { opacity: 0.6; transform: scale(1.15); }
+}
+.sticky-tg:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 16px 48px rgba(42, 171, 238, 0.45);
+}
+.sticky-tg svg {
+  width: 20px; height: 20px;
+  flex-shrink: 0;
+}
+
+/* ==================== FOOTER ==================== */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 0;
+}
+.footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.footer__name {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+}
+.footer__copy {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+.footer__links {
+  display: flex;
+  gap: 24px;
+}
+.footer__links a {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  transition: color 0.2s;
+}
+.footer__links a:hover { color: var(--accent); }
+
+/* ==================== SCROLL REVEAL ==================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              filter 0.8s ease;
+  filter: blur(4px);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+/* Scale-in for cards */
+.card.reveal {
+  transform: translateY(36px) scale(0.97);
+}
+.card.reveal.visible {
+  transform: translateY(0) scale(1);
+}
+/* Slide-in from left for about */
+.about-text.reveal {
+  transform: translateX(-40px);
+}
+.about-text.reveal.visible {
+  transform: translateX(0);
+}
+/* Slide-in from right for bento */
+.about-bento.reveal {
+  transform: translateX(40px);
+}
+.about-bento.reveal.visible {
+  transform: translateX(0);
+}
+/* Hero photo float-in */
+.hero__photo.reveal {
+  transform: translateY(40px) scale(0.95);
+}
+.hero__photo.reveal.visible {
+  transform: translateY(0) scale(1);
+}
+.services-grid .reveal:nth-child(2) { transition-delay: 0.1s; }
+.services-grid .reveal:nth-child(3) { transition-delay: 0.2s; }
+.services-grid .reveal:nth-child(4) { transition-delay: 0.3s; }
+.work-grid .reveal:nth-child(2) { transition-delay: 0.1s; }
+.work-grid .reveal:nth-child(3) { transition-delay: 0.2s; }
+.work-grid .reveal:nth-child(4) { transition-delay: 0.3s; }
+.work-grid .reveal:nth-child(5) { transition-delay: 0.35s; }
+.work-grid .reveal:nth-child(6) { transition-delay: 0.4s; }
+.process-step.reveal:nth-child(2) { transition-delay: 0.05s; }
+.process-step.reveal:nth-child(3) { transition-delay: 0.1s; }
+.process-step.reveal:nth-child(4) { transition-delay: 0.15s; }
+.process-step.reveal:nth-child(5) { transition-delay: 0.2s; }
+.reviews-grid .reveal:nth-child(2) { transition-delay: 0.1s; }
+.reviews-grid .reveal:nth-child(3) { transition-delay: 0.15s; }
+.reviews-grid .reveal:nth-child(4) { transition-delay: 0.2s; }
+.guarantee-grid .reveal:nth-child(2) { transition-delay: 0.1s; }
+.guarantee-grid .reveal:nth-child(3) { transition-delay: 0.2s; }
+.guarantee-grid .reveal:nth-child(4) { transition-delay: 0.3s; }
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 currentColor; }
+  50% { opacity: 0.7; box-shadow: 0 0 0 6px transparent; }
+}
+@keyframes orbFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(60px, -40px) scale(1.05); }
+  66%       { transform: translate(-30px, 60px) scale(0.95); }
+}
+@keyframes orbFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(-70px, 50px) scale(0.95); }
+  66%       { transform: translate(40px, -60px) scale(1.05); }
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 1024px) {
+  :root { --section-gap: 96px; }
+  .hero__inner { flex-direction: column-reverse; gap: 40px; }
+  .hero__photo { width: 280px; }
+  .hero__photo img { height: 350px; }
+  .hero__content { align-items: center; text-align: center; }
+  .hero__subtitle { max-width: 100%; }
+  .hero__stats { justify-content: center; }
+  .services-grid,
+  .work-grid { grid-template-columns: 1fr; gap: 16px; }
+  .about-grid,
+  .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  .guarantee-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  :root { --section-gap: 72px; }
+
+  .nav__links,
+  .nav__cta { display: none; }
+  .nav__links.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,10,15,0.97);
+    backdrop-filter: blur(20px);
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    z-index: 99;
+  }
+  .nav__links.open a {
+    font-size: 1.5rem;
+    color: var(--text);
+  }
+  .nav__burger { display: flex; }
+  .nav__burger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+  .nav__burger.open span:nth-child(2) { opacity: 0; }
+  .nav__burger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+
+  .hero__title { font-size: clamp(2rem, 9vw, 3.5rem); }
+  .hero__stats { gap: 16px; }
+  .hero__stat-num { font-size: 1.5rem; }
+  .hero__inner { padding: 60px 24px; }
+
+  .bento-grid { grid-template-columns: 1fr; }
+  .bento-card--stack { grid-column: span 1; }
+
+  .reviews-grid { grid-template-columns: 1fr; gap: 16px; }
+  .guarantee-grid { grid-template-columns: 1fr; }
+
+  .contact-form-wrap { padding: 24px; }
+
+  .footer__inner { flex-direction: column; text-align: center; }
+  .footer__links { justify-content: center; }
+
+  .sticky-tg span { display: none; }
+  .sticky-tg { padding: 14px; }
+
+  .back-to-top { bottom: 88px; right: 20px; width: 44px; height: 44px; }
+
+  body, button, a { cursor: auto; }
+  .cursor-dot, .cursor-outline { display: none; }
+}
+
+@media (max-width: 480px) {
+  .hero__actions { flex-direction: column; width: 100%; }
+  .hero__actions .btn { width: 100%; justify-content: center; }
+  .work-card__metrics { flex-direction: column; gap: 12px; }
+  .metric:not(:last-child) {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    margin-right: 0;
+    padding-right: 0;
+    padding-bottom: 12px;
+  }
+  .process-list::before { display: none; }
+  .process-step { flex-direction: column; gap: 16px; }
+}
+
+/* ==================== REDUCED MOTION ==================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-outline" id="cursorOutline"></div>
+
+  <!-- ==================== NAV ==================== -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#" class="nav__logo">Юлия Самарина</a>
+      <nav class="nav__links" id="navLinks">
+        <a href="#services">Услуги</a>
+        <a href="#work">Работы</a>
+        <a href="#process">Процесс</a>
+        <a href="#about">Обо мне</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a href="#contact" class="btn btn--sm nav__cta">Обсудить проект</a>
+      <button class="nav__burger" id="navBurger" aria-label="Открыть меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="hero" id="hero">
+    <div class="hero__orb hero__orb--1"></div>
+    <div class="hero__orb hero__orb--2"></div>
+    <div class="hero__dots"></div>
+
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <span class="badge reveal">
+          <span class="badge__dot"></span>
+          Доступна для новых проектов
+        </span>
+
+        <h1 class="hero__title reveal">
+          <span class="gradient-text">AI-ментор</span> для&nbsp;экспертов и&nbsp;брендов, вайбкодер
+        </h1>
+
+        <p class="hero__subtitle reveal">
+          Сайты, Mini Apps, CRM и AI-агенты. Помогаю расти в доходах
+          через автоматизацию, оптимизацию работы и создание цифровых решений
+        </p>
+
+        <div class="hero__actions reveal">
+          <a href="#contact" class="btn btn--primary">Обсудить проект</a>
+          <a href="#work" class="btn btn--ghost">Смотреть работы</a>
+        </div>
+
+        <div class="hero__stats reveal">
+          <div class="hero__stat">
+            <span class="hero__stat-num" data-target="24">0</span>
+            <span class="hero__stat-label">проектов</span>
+          </div>
+          <div class="hero__stat-sep"></div>
+          <div class="hero__stat">
+            <span class="hero__stat-num" data-target="8">0</span>
+            <span class="hero__stat-label">индустрий</span>
+          </div>
+          <div class="hero__stat-sep"></div>
+          <div class="hero__stat">
+            <span class="hero__stat-num">5.0</span>
+            <span class="hero__stat-label">рейтинг</span>
+          </div>
+          <div class="hero__stat-sep"></div>
+          <div class="hero__stat">
+            <span class="hero__stat-num">&#127758;</span>
+            <span class="hero__stat-label">весь мир</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__photo reveal">
+        <img src="img/hero.jpg" alt="Юлия Самарина — AI-ментор и вайбкодер" width="420" height="520" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SERVICES ==================== -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag">Услуги</span>
+        <h2 class="section-title">Что я создаю</h2>
+        <p class="section-desc">Лендинги, сайты, Mini Apps, приложения с подпиской, CRM, AI-агенты и нейросессии — создаю с помощью AI быстро и с характером</p>
+      </div>
+
+      <div class="services-grid">
+
+        <!-- Card 1: Websites -->
+        <div class="card service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <span class="service-card__tag">Веб-разработка</span>
+          <h3 class="service-card__title">Сайты и лендинги</h3>
+          <p class="service-card__desc">Создаю конверсионные сайты и лендинги с помощью AI — быстро, красиво и по делу. От одностраничника до полноценного сайта</p>
+          <ul class="service-card__list">
+            <li>Лендинги под запуски — от 5 000 &#8381;</li>
+            <li>Корпоративные сайты — от 30 000 &#8381;</li>
+            <li>Нейросессии и ролики об AI</li>
+            <li>Цифровые продукты под ключ</li>
+          </ul>
+          <a href="#contact" class="service-card__cta">Обсудить проект &#8594;</a>
+        </div>
+
+        <!-- Card 2: Mini Apps -->
+        <div class="card service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/><circle cx="12" cy="19" r="0.5" fill="currentColor"/></svg>
+          </div>
+          <span class="service-card__tag">Telegram</span>
+          <h3 class="service-card__title">Telegram Mini Apps</h3>
+          <p class="service-card__desc">Создаю полноценные приложения внутри Telegram — ваши клиенты уже там, дайте им удобный инструмент без лишних установок</p>
+          <ul class="service-card__list">
+            <li>Каталоги и интернет-магазины</li>
+            <li>Системы лояльности и бонусы</li>
+            <li>Бронирования и онлайн-запись</li>
+            <li>Игры и интерактивные механики</li>
+          </ul>
+          <a href="#contact" class="service-card__cta">Обсудить Mini App &#8594;</a>
+        </div>
+
+        <!-- Card 3: AI Agents (Featured) -->
+        <div class="card service-card service-card--featured reveal">
+          <div class="service-card__badge">Горячее</div>
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/><path d="M12 3v2M12 19v2M3 12H1M23 12h-2"/><path d="M5.6 5.6l1.4 1.4M16.9 16.9l1.4 1.4M5.6 18.4l1.4-1.4M16.9 7.1l1.4-1.4"/></svg>
+          </div>
+          <span class="service-card__tag">Искусственный интеллект</span>
+          <h3 class="service-card__title">AI-агенты и автоматизация</h3>
+          <p class="service-card__desc">Строю AI-системы на основе ваших данных — агенты обрабатывают запросы, автоматизируют рутину, работают без остановки</p>
+          <ul class="service-card__list">
+            <li>Чат-боты и агенты на LLM</li>
+            <li>Автоматизация поддержки клиентов</li>
+            <li>Workflow-автоматизация процессов</li>
+            <li>Интеграции с CRM, Telegram, email</li>
+          </ul>
+          <a href="#contact" class="service-card__cta">Обсудить AI-агента &#8594;</a>
+        </div>
+
+        <!-- Card 4: Neuro Training -->
+        <div class="card service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93"/><path d="M8.56 9.8A4 4 0 0 1 12 2"/><path d="M20 17.5c0-2.49-3.58-4.5-8-4.5s-8 2.01-8 4.5"/><path d="M4 21v-3.5M20 21v-3.5M12 13v8"/><circle cx="7" cy="8" r="1.5"/><circle cx="17" cy="8" r="1.5"/></svg>
+          </div>
+          <span class="service-card__tag">Обучение</span>
+          <h3 class="service-card__title">Интенсив &laquo;Нейровизуал&raquo;</h3>
+          <p class="service-card__desc">Онлайн-интенсив по AI-визуалу и текстовым моделям с уроками и индивидуальным сопровождением куратора. Научитесь создавать контент на уровне профи</p>
+          <ul class="service-card__list">
+            <li>GPT, Higgsfield, Syntx и другие</li>
+            <li>Визуал + текстовые модели в одном курсе</li>
+            <li>Индивидуальное сопровождение куратора</li>
+            <li>Стоимость — 20 000 &#8381;</li>
+          </ul>
+          <a href="#contact" class="service-card__cta">Узнать подробнее &#8594;</a>
+        </div>
+
+      </div>
+
+      <!-- Not For block -->
+      <div class="not-for reveal">
+        <h3 class="not-for__title">Кому я не подойду</h3>
+        <ul class="not-for__list">
+          <li>Если нужно &laquo;вчера&raquo; — хорошая работа требует времени, даже с AI</li>
+          <li>Если ищете самый дешёвый вариант — работаю качественно, не в ноль</li>
+          <li>Если не готовы к обратной связи — результат создаётся вместе</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== PORTFOLIO ==================== -->
+  <section class="section" id="work">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag">Портфолио</span>
+        <h2 class="section-title">Избранные проекты</h2>
+        <p class="section-desc">Не просто красивые экраны — реальные задачи с измеримым результатом</p>
+      </div>
+
+      <div class="work-grid">
+
+        <!-- Project 1: Tutor Landing -->
+        <div class="card work-card reveal">
+          <div class="work-card__thumb">
+            <img src="img/work-tutor.png" alt="Лендинг репетитора по истории" loading="lazy" />
+          </div>
+          <div class="work-card__body">
+            <span class="work-card__tag">Лендинг</span>
+            <h3 class="work-card__title">Лендинг для репетитора по истории — +23 ученика за 2 месяца</h3>
+            <p class="work-card__desc">Репетитору нужен был лендинг с активными кнопками связи — Telegram, звонок, соцсети. Особенно актуально, когда часть соцсетей блокируется. Лендинг стал единой точкой входа для новых учеников.</p>
+            <div class="work-card__metrics">
+              <div class="metric">
+                <span class="metric__num">+23</span>
+                <span class="metric__label">новых ученика</span>
+              </div>
+              <div class="metric">
+                <span class="metric__num">2 мес</span>
+                <span class="metric__label">до результата</span>
+              </div>
+              <div class="metric">
+                <span class="metric__num">ЕГЭ/ОГЭ</span>
+                <span class="metric__label">ниша</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: Digital Business Card -->
+        <div class="card work-card reveal">
+          <div class="work-card__thumb">
+            <img src="img/work-card.png" alt="Виртуальная визитка ведущего" loading="lazy" />
+          </div>
+          <div class="work-card__body">
+            <span class="work-card__tag">Digital-визитка</span>
+            <h3 class="work-card__title">Виртуальная визитка для ведущего — все соцсети через один QR</h3>
+            <p class="work-card__desc">Ведущий мероприятий выступал на конференциях. Сделала QR-визитку: гости сканировали код и сразу подписывались на все площадки — Telegram, Instagram, VK, канал. Один QR — несколько соцсетей.</p>
+            <div class="work-card__metrics">
+              <div class="metric">
+                <span class="metric__num">1 QR</span>
+                <span class="metric__label">все соцсети</span>
+              </div>
+              <div class="metric">
+                <span class="metric__num">4</span>
+                <span class="metric__label">площадки</span>
+              </div>
+              <div class="metric">
+                <span class="metric__num">300+</span>
+                <span class="metric__label">гостей на событиях</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: Neurovisual Landing -->
+        <div class="card work-card reveal">
+          <div class="work-card__thumb">
+            <img src="img/work-neuro.png" alt="Лендинг интенсива Нейро-Визуал" loading="lazy" />
+          </div>
+          <div class="work-card__body">
+            <span class="work-card__tag">Продуктовый лендинг</span>
+            <h3 class="work-card__title">Лендинг интенсива &laquo;Нейро-Визуал&raquo; — 150+ участников</h3>
+            <p class="work-card__desc">Лендинг для онлайн-интенсива по нейросетям: от промпта до анимации за 2 недели. Кликабельные кнопки, отзывы, программа, цены — всё для того, чтобы человек прочитал и записался.</p>
+            <div class="work-card__metrics">
+              <div class="metric">
+                <span class="metric__num">150+</span>
+                <span class="metric__label">участников</span>
+              </div>
+              <div class="metric">
+                <span class="metric__num">8</span>
+                <span class="metric__label">уроков в курсе</span>
+              </div>
+              <div class="metric">
+                <span class="metric__num">2 нед</span>
+                <span class="metric__label">интенсив</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4: Decant Pro -->
+        <div class="card work-card reveal">
+          <div class="work-card__thumb">
+            <img src="img/work-decant.png" alt="Decant Pro — калькулятор для парфюмерных стилистов" loading="lazy" />
+          </div>
+          <div class="work-card__body">
+            <span class="work-card__tag">Веб-приложение</span>
+            <h3 class="work-card__title">Decant Pro — калькулятор наценки для парфюмерных стилистов</h3>
+            <p class="work-card__desc">Инструмент для расчёта выгодной наценки с учётом всех расходов: атомайзер, доставка, наклейка, упаковка. Сохранение расчётов в память, шаблоны, тёмная и светлая тема.</p>
+            <div class="work-card__metrics">
+              <div class="metric">
+                <span class="metric__num">5+</span>
+                <span class="metric__label">типов расходов</span>
+              </div>
+              <div class="metric">
+                <span class="metric__num">PWA</span>
+                <span class="metric__label">работает офлайн</span>
+              </div>
+              <div class="metric">
+                <span class="metric__num">0 сек</span>
+                <span class="metric__label">расчёт мгновенно</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5: Mini App for beauty salon -->
+        <div class="card work-card reveal">
+          <div class="work-card__thumb work-card__thumb--accent">
+            <span>TG</span>
+          </div>
+          <div class="work-card__body">
+            <span class="work-card__tag">Telegram Mini App</span>
+            <h3 class="work-card__title">Mini App для студии красоты — онлайн-запись без звонков</h3>
+            <p class="work-card__desc">Владелица студии теряла клиентов из-за пропущенных звонков. Создала Mini App в Telegram: выбор мастера, услуги, свободные слоты, напоминания. Клиенты записываются сами.</p>
+            <div class="work-card__metrics">
+              <div class="metric">
+                <span class="metric__num">+35%</span>
+                <span class="metric__label">записей онлайн</span>
+              </div>
+              <div class="metric">
+                <span class="metric__num">0</span>
+                <span class="metric__label">пропущенных заявок</span>
+              </div>
+              <div class="metric">
+                <span class="metric__num">3 нед</span>
+                <span class="metric__label">до запуска</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 6: AI agent for online school -->
+        <div class="card work-card reveal">
+          <div class="work-card__thumb work-card__thumb--accent2">
+            <span>AI</span>
+          </div>
+          <div class="work-card__body">
+            <span class="work-card__tag">AI-агент</span>
+            <h3 class="work-card__title">AI-ассистент для онлайн-школы — автоматизация 80% обращений</h3>
+            <p class="work-card__desc">Менеджеры тратили часы на одни и те же вопросы. Создала AI-агента в Telegram, обученного на базе знаний школы — отвечает мгновенно, ведёт до покупки.</p>
+            <div class="work-card__metrics">
+              <div class="metric">
+                <span class="metric__num">&minus;80%</span>
+                <span class="metric__label">нагрузки на менеджеров</span>
+              </div>
+              <div class="metric">
+                <span class="metric__num">24/7</span>
+                <span class="metric__label">работает без перерыва</span>
+              </div>
+              <div class="metric">
+                <span class="metric__num">+12%</span>
+                <span class="metric__label">конверсия в покупку</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PROCESS ==================== -->
+  <section class="section" id="process">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag">Процесс</span>
+        <h2 class="section-title">Как мы будем работать</h2>
+        <p class="section-desc">Прозрачный процесс — никаких исчезновений, никаких сюрпризов в счёте</p>
+      </div>
+
+      <div class="process-list">
+        <div class="process-step reveal">
+          <div class="process-step__num">01</div>
+          <div class="process-step__body">
+            <h3>Discovery Call</h3>
+            <p>Созваниваемся на 30 минут — обсуждаем цели, ограничения, контекст. Без продаж, без давления. Просто честный разговор о том, что вам нужно.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-step__num">02</div>
+          <div class="process-step__body">
+            <h3>КП и техническое задание</h3>
+            <p>В течение 48 часов отправляю детальное предложение: объём, сроки, стоимость, ожидаемые результаты. Никаких размытых формулировок — только конкретика.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-step__num">03</div>
+          <div class="process-step__body">
+            <h3>Дизайн и разработка</h3>
+            <p>Работаю спринтами по 1–2 недели. Еженедельные апдейты: вы всегда знаете статус. Правки обсуждаются открыто до начала следующего этапа.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-step__num">04</div>
+          <div class="process-step__body">
+            <h3>Тестирование и запуск</h3>
+            <p>Полное тестирование перед деплоем. Запускаем вместе — обеспечиваю плавный переход без простоев и потери данных.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-step__num">05</div>
+          <div class="process-step__body">
+            <h3>Поддержка после запуска</h3>
+            <p>30 дней поддержки включено в каждый проект. Мелкие правки, вопросы, баги — решаю быстро. Долгосрочное партнёрство доступно отдельно.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="process-cta reveal">
+        <a href="#contact" class="btn btn--primary">Начать проект</a>
+        <span class="process-cta__note">Ответ в течение 24 часов &middot; Первый созвон бесплатно</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT ==================== -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="about-grid">
+
+        <div class="about-text reveal">
+          <span class="section-tag">Обо мне</span>
+          <h2 class="section-title">Почему я, а не агентство</h2>
+          <p>Большинство думают, что хороший цифровой продукт — это долго и дорого. Я доказываю обратное каждый день.</p>
+          <p>Я — <strong>Юлия Самарина</strong>, AI-ментор и вайбкодер. Ко мне обращаются эксперты и бренды за ростом доходов — через автоматизацию процессов, оптимизацию работы и создание цифровых решений. Лендинги, сайты, Mini Apps, приложения с подпиской, CRM, AI-агенты — каждый проект веду лично, от первого сообщения до запуска.</p>
+          <p>Работаю с клиентами по всему миру, использую самые современные AI-инструменты. Именно это позволяет делать быстро, качественно и доступно.</p>
+          <div class="about-availability">
+            <span class="status-dot"></span>
+            <span>Доступна &middot; Беру не более 2 проектов одновременно</span>
+          </div>
+        </div>
+
+        <div class="about-bento reveal">
+          <div class="about-photo">
+            <img src="img/about.jpg" alt="Юлия Самарина" width="360" height="400" loading="lazy" />
+          </div>
+          <div class="bento-grid">
+            <div class="bento-card bento-card--stat">
+              <span class="bento-num">24</span>
+              <span class="bento-label">проектов<br>запущено</span>
+            </div>
+            <div class="bento-card bento-card--stat">
+              <span class="bento-num">&#127758;</span>
+              <span class="bento-label">работаю<br>по всему миру</span>
+            </div>
+            <div class="bento-card bento-card--stack">
+              <span class="bento-label">Технологии</span>
+              <div class="stack-tags">
+                <span>Claude</span>
+                <span>GPT-4o</span>
+                <span>AI Studio</span>
+                <span>HIG</span>
+                <span>Telegram API</span>
+                <span>HTML / CSS / JS</span>
+                <span>Figma</span>
+                <span>No-code</span>
+              </div>
+            </div>
+            <div class="bento-card bento-card--rating">
+              <span class="bento-num">5.0</span>
+              <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <span class="bento-label">средний рейтинг</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== REVIEWS ==================== -->
+  <section class="section" id="reviews">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag">Отзывы</span>
+        <h2 class="section-title">Что говорят клиенты</h2>
+        <p class="section-desc">Реальные слова реальных людей — без правок и купюр</p>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="card review-card reveal">
+          <p class="review-card__text">Хочу сказать огромное спасибо. Фоточки бомба! Особенно я на них получилась. Отдельное спасибо за скорость! Очень переживала, что не успеем к сроку, но вы сделали работу не только качественно, но и очень оперативно. Приятно иметь дело с профессионалом, который ценит своё и чужое время. Однозначно рекомендую!</p>
+          <div class="review-card__author">
+            <div class="review-card__avatar">К</div>
+            <div>
+              <div class="review-card__name">Клиентка</div>
+              <div class="review-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card review-card reveal">
+          <p class="review-card__text">Юлечка, я хочу поблагодарить от всей души за курс по нейросетям. Несмотря на то, что он был в мае, я использую его в работе очень активно по сей день. В работе гинеколога нейросети играют очень большую роль. Мне так легко создавать проекты, формировать таблицы, писать тексты — это просто потрясающе. Это экономит очень много времени!</p>
+          <div class="review-card__author">
+            <div class="review-card__avatar">В</div>
+            <div>
+              <div class="review-card__name">Врач-гинеколог</div>
+              <div class="review-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card review-card reveal">
+          <p class="review-card__text">Юля, дорогая моя! Пишу тебе спасибо! Ты вдохновила меня на нейросети! Я конечно ещё не всё посмотрела, не всё изучила, но благодаря тебе я поняла — это не сложно! Смотри что вчера сделала для нашей Кати ночью</p>
+          <div class="review-card__author">
+            <div class="review-card__avatar">У</div>
+            <div>
+              <div class="review-card__name">Участница курса</div>
+              <div class="review-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card review-card reveal">
+          <p class="review-card__text">Выражаю благодарность и восхищение тем, как грамотно слажен марафон: знания, навыки, поддержка, отдача, забота, чуткость к каждому участнику. Спокойный ритм без спешки дал возможность реализовывать знания в моменте. Невероятно дружеская атмосфера и человечность на марафоне. Было круто, благодарю!</p>
+          <div class="review-card__author">
+            <div class="review-card__avatar">С</div>
+            <div>
+              <div class="review-card__name">Святослав С.</div>
+              <div class="review-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== GUARANTEE ==================== -->
+  <section class="section" id="guarantee">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag">Гарантии</span>
+        <h2 class="section-title">Работаю прозрачно</h2>
+        <p class="section-desc">Вот чем могу ответить за каждый проект</p>
+      </div>
+      <div class="guarantee-grid">
+        <div class="guarantee-card reveal">
+          <span class="guarantee-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="1.5" width="32" height="32"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </span>
+          <h4 class="guarantee-card__title">Фиксированная цена</h4>
+          <p class="guarantee-card__desc">Цена в КП = итоговая цена. Без скрытых доплат и неожиданностей</p>
+        </div>
+        <div class="guarantee-card reveal">
+          <span class="guarantee-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="1.5" width="32" height="32"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
+          </span>
+          <h4 class="guarantee-card__title">Сроки в договоре</h4>
+          <p class="guarantee-card__desc">Дедлайны фиксирую письменно. Если что-то меняется — сообщаю заранее</p>
+        </div>
+        <div class="guarantee-card reveal">
+          <span class="guarantee-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="1.5" width="32" height="32"><path d="M17 3a2.85 2.85 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+          </span>
+          <h4 class="guarantee-card__title">Правки включены</h4>
+          <p class="guarantee-card__desc">Раунды правок уже в стоимости. Вы участвуете на каждом этапе</p>
+        </div>
+        <div class="guarantee-card reveal">
+          <span class="guarantee-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="1.5" width="32" height="32"><path d="M21 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-3"/><path d="M9 12h12M15 8l4 4-4 4"/></svg>
+          </span>
+          <h4 class="guarantee-card__title">Исходники ваши</h4>
+          <p class="guarantee-card__desc">Все файлы, код и доступы передаю вам. Проект — ваша собственность</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FAQ ==================== -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag">FAQ</span>
+        <h2 class="section-title">Частые вопросы</h2>
+        <p class="section-desc">Ответы на то, что обычно спрашивают до первого созвона</p>
+      </div>
+
+      <div class="faq-list reveal">
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Сколько стоят ваши услуги?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a" role="region">
+            <p>Стоимость зависит от объёма и сложности. Ориентировочно: лендинги — от 5 000 &#8381;, сайты — от 30 000 &#8381;, Telegram Mini Apps — от 40 000 &#8381;, AI-агенты — от 20 000 &#8381;. После первого созвона составляю точное КП. Предоплата 50%, остаток при сдаче проекта.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Сколько времени занимает разработка?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a" role="region">
+            <p>Лендинги — 5–9 дней, Telegram Mini Apps — 4–6 недель, AI-агенты — 7–20 дней. Сроки фиксирую в КП и придерживаюсь их. Если что-то меняется, то сообщаю заранее, а не в последний день.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Работаете ли вы с клиентами из других городов и стран?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a" role="region">
+            <p>Да, работаю полностью удалённо. Среди клиентов — компании из России, Казахстана, ОАЭ и Европы. Созваниваемся в удобное для вас время, общаемся в Telegram или по email.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Что если мне не понравится результат?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a" role="region">
+            <p>В каждый проект включены итерации и раунды правок — вы участвуете на каждом этапе, неожиданностей быть не должно. Если что-то идёт не так — разбираем честно и исправляем.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Вы работаете одна или с командой?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a" role="region">
+            <p>Основную работу веду сама. Для дизайна или узкоспециализированных задач привлекаю проверенных коллег — но вы всегда общаетесь лично со мной. Никакой &laquo;испорченной телефонной трубки&raquo; с менеджерами.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Есть ли поддержка после запуска?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a" role="region">
+            <p>Да — 30 дней бесплатной поддержки включены в каждый проект. Для долгосрочного сопровождения — отдельный договор с фиксированной абонентской платой.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Что если вы заболеете или будете недоступны?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a" role="region">
+            <p>У меня есть проверенные коллеги, которые могут подхватить проект в экстренной ситуации. Но за 24+ проекта таких случаев не было — я планирую загрузку так, чтобы форс-мажоры не влияли на сроки.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Подписываете ли NDA?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a" role="region">
+            <p>Да, подписываю NDA по запросу. Конфиденциальность ваших данных и бизнес-информации — для меня приоритет. Готова работать по вашему шаблону или предложу свой.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT ==================== -->
+  <section class="section section--contact" id="contact">
+    <div class="contact-orb"></div>
+    <div class="container">
+      <div class="contact-grid">
+
+        <div class="contact-info reveal">
+          <span class="section-tag">Контакт</span>
+          <h2 class="section-title">Готовы начать?</h2>
+          <p class="contact-info__desc">Расскажите о проекте — без обязательств, без давления. Просто разговор о том, что вам нужно и что реально достижимо.</p>
+          <div class="contact-links">
+            <a href="mailto:yuliya.samarina.84.84@mail.ru" class="contact-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8l10 6 10-6"/></svg>
+              yuliya.samarina.84.84@mail.ru
+            </a>
+            <a href="https://t.me/samarina_parfum" class="contact-link" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 5L2 12.5l7 1M21 5l-5.5 15-6-8.5M21 5L9 13.5"/></svg>
+              @samarina_parfum
+            </a>
+            <a href="tel:+79198308956" class="contact-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 012 2.18 2 2 0 014 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              +7 919 830 89 56
+            </a>
+          </div>
+          <p class="contact-note">Ответ в течение 24 часов &middot; Первый созвон бесплатно</p>
+
+          <!-- What happens next -->
+          <div class="contact-next">
+            <h4 class="contact-next__title">Что произойдёт дальше:</h4>
+            <ul class="contact-next__list">
+              <li data-step="1.">Отвечу в Telegram или на email в течение 24 часов</li>
+              <li data-step="2.">Назначим короткий звонок (15–30 мин) — без продажного давления</li>
+              <li data-step="3.">Если смогу помочь — расскажу как и сколько. Если нет — скажу честно</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap reveal">
+          <!-- Success overlay -->
+          <div class="form-success-overlay" id="formSuccess">
+            <div class="success-particles">
+              <div class="success-particle"></div>
+              <div class="success-particle"></div>
+              <div class="success-particle"></div>
+              <div class="success-particle"></div>
+              <div class="success-particle"></div>
+              <div class="success-particle"></div>
+              <div class="success-particle"></div>
+              <div class="success-particle"></div>
+            </div>
+            <svg class="success-checkmark" viewBox="0 0 80 80">
+              <circle class="success-checkmark__circle" cx="40" cy="40" r="38"/>
+              <polyline class="success-checkmark__check" points="26,42 36,52 56,30"/>
+            </svg>
+            <span class="success-title">Сообщение отправлено!</span>
+            <span class="success-desc">Отвечу вам в течение 24 часов. Спасибо за доверие!</span>
+          </div>
+          <form class="contact-form" id="contactForm" novalidate>
+            <div class="form-group">
+              <label for="name">Как вас зовут?</label>
+              <input type="text" id="name" name="name" placeholder="Иван Иванов" autocomplete="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="ivan@company.ru" autocomplete="email" required />
+            </div>
+            <div class="form-group">
+              <label for="message">Расскажите о проекте</label>
+              <textarea id="message" name="message" rows="4" placeholder="Что нужно сделать? Какой результат хотите получить?"></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary btn--full">
+              Отправить сообщение
+            </button>
+            <p class="form-note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__name">Юлия Самарина</span>
+      <span class="footer__copy">Сайты &middot; Mini Apps &middot; CRM &middot; Подписки &middot; AI-агенты &middot; &copy; 2026</span>
+      <div class="footer__links">
+        <a href="https://t.me/samarina_parfum" target="_blank" rel="noopener">Telegram</a>
+        <a href="mailto:yuliya.samarina.84.84@mail.ru">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top button -->
+  <button class="back-to-top" id="backToTop" aria-label="Наверх">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <!-- Sticky Telegram button -->
+  <a href="https://t.me/samarina_parfum" class="sticky-tg" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+    <span>Написать в Telegram</span>
+  </a>
+
+<script>
+/* ============================================================
+   MAIN JS — Landing Page Interactions (inline)
+   ============================================================ */
+
+/* 1. Custom Cursor */
+(function initCursor() {
+  const dot = document.getElementById('cursorDot');
+  const outline = document.getElementById('cursorOutline');
+  if (!dot || !outline) return;
+  if (window.matchMedia('(hover: none)').matches) {
+    dot.style.display = 'none';
+    outline.style.display = 'none';
+    return;
+  }
+
+  let mouseX = 0, mouseY = 0, outlineX = 0, outlineY = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.left = mouseX + 'px';
+    dot.style.top = mouseY + 'px';
+  });
+
+  function animateOutline() {
+    const ease = 0.12;
+    outlineX += (mouseX - outlineX) * ease;
+    outlineY += (mouseY - outlineY) * ease;
+    outline.style.left = outlineX + 'px';
+    outline.style.top = outlineY + 'px';
+    requestAnimationFrame(animateOutline);
+  }
+  animateOutline();
+
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest('a, button, [role="button"], input, textarea, label')) {
+      dot.style.transform = 'translate(-50%, -50%) scale(2.5)';
+      outline.style.transform = 'translate(-50%, -50%) scale(1.5)';
+      outline.style.borderColor = 'rgba(167, 139, 250, 0.8)';
+    }
+  });
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest('a, button, [role="button"], input, textarea, label')) {
+      dot.style.transform = 'translate(-50%, -50%) scale(1)';
+      outline.style.transform = 'translate(-50%, -50%) scale(1)';
+      outline.style.borderColor = 'rgba(167, 139, 250, 0.5)';
+    }
+  });
+
+  document.addEventListener('mouseleave', () => { dot.style.opacity = '0'; outline.style.opacity = '0'; });
+  document.addEventListener('mouseenter', () => { dot.style.opacity = '1'; outline.style.opacity = '1'; });
+})();
+
+/* 2. Navigation */
+(function initNav() {
+  const nav = document.getElementById('nav');
+  const burger = document.getElementById('navBurger');
+  const links = document.getElementById('navLinks');
+  if (!nav) return;
+
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  if (burger && links) {
+    burger.addEventListener('click', () => {
+      const isOpen = links.classList.toggle('open');
+      burger.classList.toggle('open', isOpen);
+      burger.setAttribute('aria-label', isOpen ? 'Закрыть меню' : 'Открыть меню');
+      burger.setAttribute('aria-expanded', String(isOpen));
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        links.classList.remove('open');
+        burger.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+      const target = document.querySelector(anchor.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      const offset = nav.offsetHeight + 16;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+})();
+
+/* 3. Scroll Reveal */
+(function initReveal() {
+  const elements = document.querySelectorAll('.reveal');
+  if (!elements.length) return;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  elements.forEach(el => observer.observe(el));
+})();
+
+/* 4. Stats Counter Animation */
+(function initCounters() {
+  const counters = document.querySelectorAll('[data-target]');
+  if (!counters.length) return;
+  const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+  const animateCounter = (el) => {
+    const target = parseInt(el.dataset.target, 10);
+    const duration = 1400;
+    const start = performance.now();
+    const update = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      el.textContent = Math.round(easeOut(progress) * target);
+      if (progress < 1) requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+  };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(el => observer.observe(el));
+})();
+
+/* 5. FAQ Accordion */
+(function initFAQ() {
+  const items = document.querySelectorAll('.faq-item');
+  if (!items.length) return;
+  items.forEach(item => {
+    const btn = item.querySelector('.faq-q');
+    const answer = item.querySelector('.faq-a');
+    if (!btn || !answer) return;
+    btn.addEventListener('click', () => {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      items.forEach(other => {
+        const ob = other.querySelector('.faq-q');
+        const oa = other.querySelector('.faq-a');
+        if (ob && oa && other !== item) {
+          ob.setAttribute('aria-expanded', 'false');
+          oa.classList.remove('open');
+        }
+      });
+      const nowOpen = !isOpen;
+      btn.setAttribute('aria-expanded', String(nowOpen));
+      answer.classList.toggle('open', nowOpen);
+    });
+  });
+})();
+
+/* 6. Contact Form */
+(function initForm() {
+  const form = document.getElementById('contactForm');
+  const successOverlay = document.getElementById('formSuccess');
+  if (!form) return;
+
+  const TG_TOKEN = '8732155312:AAGYtQXM7s6W5nnl2J0TFifRQArUXP8WGV0';
+  const TG_CHAT  = '1457545952';
+  const TG_API   = 'https://api.telegram.org/bot' + TG_TOKEN + '/sendMessage';
+
+  function showSuccess() {
+    if (!successOverlay) return;
+    successOverlay.classList.add('active');
+    setTimeout(() => {
+      successOverlay.classList.remove('active');
+    }, 4500);
+  }
+
+  function showError(text) {
+    let msg = form.querySelector('.form-message');
+    if (!msg) {
+      msg = document.createElement('p');
+      msg.className = 'form-message';
+      msg.style.cssText = 'font-size:0.85rem;padding:10px 14px;border-radius:8px;margin-top:-4px;';
+      form.appendChild(msg);
+    }
+    msg.textContent = text;
+    msg.style.background = 'rgba(239,68,68,0.1)';
+    msg.style.color = '#F87171';
+    msg.style.border = '1px solid rgba(239,68,68,0.2)';
+    setTimeout(() => msg?.remove(), 5000);
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    const nameVal = form.querySelector('#name')?.value?.trim();
+    const emailVal = form.querySelector('#email')?.value?.trim();
+    const messageVal = form.querySelector('#message')?.value?.trim();
+
+    if (!nameVal || !emailVal) { showError('Пожалуйста, заполните имя и email'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) { showError('Введите корректный email'); return; }
+
+    btn.disabled = true;
+    btn.textContent = 'Отправляем...';
+
+    const text = '\u{1F4E9} Новая заявка с сайта!\n\n'
+      + '\u{1F464} Имя: ' + nameVal + '\n'
+      + '\u{1F4E7} Email: ' + emailVal + '\n'
+      + (messageVal ? '\u{1F4DD} Сообщение: ' + messageVal : '\u{1F4DD} Сообщение: (не указано)');
+
+    fetch(TG_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: TG_CHAT, text: text, parse_mode: '' })
+    })
+    .then(r => r.json())
+    .then(data => {
+      btn.disabled = false;
+      btn.textContent = 'Отправить сообщение';
+      if (data.ok) {
+        form.reset();
+        showSuccess();
+      } else {
+        showError('Ошибка отправки. Напишите напрямую в Telegram: @samarina_parfum');
+      }
+    })
+    .catch(() => {
+      btn.disabled = false;
+      btn.textContent = 'Отправить сообщение';
+      showError('Ошибка сети. Напишите напрямую в Telegram: @samarina_parfum');
+    });
+  });
+})();
+
+/* 6b. Back to Top Button */
+(function initBackToTop() {
+  const btn = document.getElementById('backToTop');
+  if (!btn) return;
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        btn.classList.toggle('visible', window.scrollY > 500);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+
+/* 7. Parallax — orbs + dot grid + sections */
+(function initParallax() {
+  const orb1 = document.querySelector('.hero__orb--1');
+  const orb2 = document.querySelector('.hero__orb--2');
+  const dots = document.querySelector('.hero__dots');
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        if (orb1) orb1.style.transform = 'translateY(' + (y * 0.18) + 'px)';
+        if (orb2) orb2.style.transform = 'translateY(' + (y * -0.12) + 'px)';
+        if (dots) dots.style.transform = 'translateY(' + (y * 0.06) + 'px)';
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+
+/* 8. Hero photo 3D tilt on mouse */
+(function initTilt() {
+  const photo = document.querySelector('.hero__photo');
+  if (!photo || window.matchMedia('(hover: none)').matches) return;
+
+  photo.addEventListener('mousemove', (e) => {
+    const rect = photo.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    photo.style.transform = 'perspective(800px) rotateY(' + (x * 8) + 'deg) rotateX(' + (-y * 8) + 'deg)';
+  });
+  photo.addEventListener('mouseleave', () => {
+    photo.style.transform = 'perspective(800px) rotateY(0) rotateX(0)';
+    photo.style.transition = 'transform 0.5s ease';
+    setTimeout(() => { photo.style.transition = ''; }, 500);
+  });
+})();
+
+/* 9. Magnetic buttons */
+(function initMagnetic() {
+  if (window.matchMedia('(hover: none)').matches) return;
+  document.querySelectorAll('.btn--primary, .nav__cta').forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      btn.style.transform = 'translate(' + (x * 0.15) + 'px,' + (y * 0.15) + 'px)';
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = '';
+      btn.style.transition = 'transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)';
+      setTimeout(() => { btn.style.transition = ''; }, 400);
+    });
+  });
+})();
+
+/* 10. Text typing reveal for hero title */
+(function initTypeReveal() {
+  const title = document.querySelector('.hero__title');
+  if (!title) return;
+  title.style.opacity = '0';
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        title.style.transition = 'opacity 0.6s ease';
+        title.style.opacity = '1';
+        const words = title.querySelectorAll('.reveal-word');
+        words.forEach((w, i) => {
+          w.style.animationDelay = (i * 0.08) + 's';
+        });
+        obs.unobserve(title);
+      }
+    });
+  }, { threshold: 0.3 });
+  obs.observe(title);
+})();
+</script>
+
+</body>
+</html>
