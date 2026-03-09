@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Юлия Самарина — Услуги</title>
+  <!-- Telegram Web App SDK -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <!-- Заглушка для предпросмотра в обычном браузере -->
+  <script>
+    if (!window.Telegram || !window.Telegram.WebApp) {
+      // Заглушка: имитируем Telegram Web App API в обычном браузере
+      var mockMainEl = null, mockBackEl = null;
+      document.addEventListener('DOMContentLoaded', function() {
+        mockMainEl = document.getElementById('mock-main');
+        mockBackEl = document.getElementById('mock-back');
+        if (mockMainEl) mockMainEl.addEventListener('click', function() {
+          if (window.Telegram.WebApp.MainButton._cb) window.Telegram.WebApp.MainButton._cb();
+        });
+        if (mockBackEl) mockBackEl.addEventListener('click', function() {
+          if (window.Telegram.WebApp.BackButton._cb) window.Telegram.WebApp.BackButton._cb();
+        });
+      });
+
+      window.Telegram = { WebApp: {
+        ready: function(){}, expand: function(){},
+        themeParams: {},
+        headerColor: '',
+        initDataUnsafe: { user: { first_name: 'Гость', username: 'preview', id: 0 } },
+        MainButton: {
+          _cb: null, _text: '',
+          setText: function(t) { this._text = t; if (mockMainEl) mockMainEl.textContent = t; },
+          show: function() { if (mockMainEl) mockMainEl.classList.add('visible'); },
+          hide: function() { if (mockMainEl) mockMainEl.classList.remove('visible'); },
+          enable: function() { if (mockMainEl) mockMainEl.classList.remove('disabled'); },
+          disable: function() { if (mockMainEl) mockMainEl.classList.add('disabled'); },
+          showProgress: function() { this.disable(); },
+          hideProgress: function() { this.enable(); },
+          onClick: function(cb) { this._cb = cb; },
+          offClick: function() {}
+        },
+        BackButton: {
+          _cb: null,
+          show: function() { if (mockBackEl) mockBackEl.classList.add('visible'); },
+          hide: function() { if (mockBackEl) mockBackEl.classList.remove('visible'); },
+          onClick: function(cb) { this._cb = cb; },
+          offClick: function() {}
+        },
+        HapticFeedback: {
+          impactOccurred: function(){}, notificationOccurred: function(){}, selectionChanged: function(){}
+        },
+        openTelegramLink: function(url) { window.open(url, '_blank'); },
+        openLink: function(url) { window.open(url, '_blank'); },
+        close: function() {}
+      }};
+    }
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Кнопки-заглушки для просмотра в браузере (в TG будут нативные) -->
+  <button class="mock-back-btn" id="mock-back">←</button>
+  <button class="mock-main-btn" id="mock-main"></button>
+
+  <!-- Контейнер приложения — сюда рендерятся экраны -->
+  <div id="app"></div>
+
+  <!-- Попап подтверждения заявки -->
+  <div id="success-overlay" class="overlay hidden">
+    <div class="overlay__content">
+      <div class="success-icon">
+        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="32" fill="var(--success)"/>
+          <path class="success-check" d="M20 33L28 41L44 23" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h2 class="overlay__title">Заявка отправлена!</h2>
+      <p class="overlay__text">Юлия ответит в течение 2 часов в Telegram</p>
+      <button class="btn btn--primary overlay__btn" id="btn-write-tg">
+        💬 Написать в Telegram
+      </button>
+      <button class="btn btn--ghost overlay__btn" id="btn-back-home">
+        ← Вернуться к услугам
+      </button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
