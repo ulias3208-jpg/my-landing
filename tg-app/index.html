@@ -8,7 +8,7 @@
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <!-- Заглушка для предпросмотра в обычном браузере -->
   <script>
-    if (!window.Telegram || !window.Telegram.WebApp) {
+    if (!window.Telegram || !window.Telegram.WebApp || !window.Telegram.WebApp.initData) {
       // Заглушка: имитируем Telegram Web App API в обычном браузере
       var mockMainEl = null, mockBackEl = null;
       document.addEventListener('DOMContentLoaded', function() {
@@ -55,7 +55,7 @@
       }};
     }
   </script>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 
@@ -86,6 +86,39 @@
     </div>
   </div>
 
-  <script src="app.js"></script>
+  <!-- Онбординг при первом запуске -->
+  <div id="onboarding-overlay" class="offer-overlay" style="display:none">
+    <div class="offer-backdrop"></div>
+    <div class="offer-card onboarding-card">
+      <div class="offer-emoji">👋</div>
+      <h2 class="offer-title" id="onboarding-greeting">Добро пожаловать!</h2>
+      <p class="offer-subtitle">Здесь вы можете:</p>
+      <ul class="offer-bullets onboarding-bullets">
+        <li>Посмотреть услуги и цены</li>
+        <li>Оставить заявку в пару кликов</li>
+        <li>Связаться с Юлией напрямую</li>
+      </ul>
+      <button class="btn btn--primary offer-btn" id="onboarding-start">Начать</button>
+    </div>
+  </div>
+
+  <!-- Оффер при первом открытии -->
+  <div id="offer-overlay" class="offer-overlay" style="display:none">
+    <div class="offer-backdrop"></div>
+    <div class="offer-card">
+      <div class="offer-emoji">🎁</div>
+      <h2 class="offer-title">Урок бесплатно<br>«Как правильно составить промт»</h2>
+      <p class="offer-subtitle">Подпишитесь на бота — получите подарок в личное сообщение</p>
+      <ul class="offer-bullets">
+        <li>Эксклюзивные предложения и новости для подписчиков</li>
+      </ul>
+      <a class="btn btn--primary offer-btn" id="offer-accept" href="https://t.me/Samarina28_bot?start=from_app" target="_blank">
+        Получить подарок
+      </a>
+      <button class="offer-skip" id="offer-skip">Пропустить</button>
+    </div>
+  </div>
+
+  <script src="app.js?v=2"></script>
 </body>
 </html>

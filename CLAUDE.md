@@ -1,22 +1,30 @@
 # CLAUDE.md — Инструкции для Claude Code
 
 ## Проект
-Персональный лендинг Юлии Самариной — AI-ментор, вайбкодер.
+Юлия Самарина — AI-ментор, вайбкодер. Два продукта:
+1. **Лендинг** (`index.html`) — персональный сайт-портфолио
+2. **Telegram Mini App** (`mini-app/`) — каталог услуг внутри Telegram
 
 ## Структура
 ```
 my-landing/
-├── index.html      — Весь лендинг (HTML + CSS + JS inline, single-file)
-├── plan.md         — План доработок
-├── brief.md        — Исходное ТЗ
-├── CLAUDE.md       — Этот файл
-└── img/
-    ├── hero.jpg        — Деловой портрет (секция Hero)
-    ├── about.jpg       — Креативное фото (секция About)
-    ├── work-tutor.png  — Скриншот: лендинг репетитора
-    ├── work-card.png   — Скриншот: визитка ведущего
-    ├── work-neuro.png  — Скриншот: лендинг Нейро-Визуал
-    └── work-decant.png — Скриншот: Decant Pro
+├── index.html          — Лендинг (HTML + CSS + JS inline, single-file)
+├── research.md         — Исследование Mini Apps + экспертная оценка
+├── brief.md            — План разработки Mini App (экраны, элементы, переходы)
+├── CLAUDE.md           — Этот файл
+├── img/                — Изображения для лендинга
+│   ├── hero.jpg        — Деловой портрет (секция Hero)
+│   ├── about.jpg       — Креативное фото (секция About)
+│   ├── work-tutor.png  — Скриншот: лендинг репетитора
+│   ├── work-card.png   — Скриншот: визитка ведущего
+│   ├── work-neuro.png  — Скриншот: лендинг Нейро-Визуал
+│   └── work-decant.png — Скриншот: Decant Pro
+└── mini-app/           — Telegram Mini App (будущая разработка)
+    ├── index.html
+    ├── style.css
+    ├── app.js
+    ├── data/services.json
+    └── img/portfolio/
 ```
 
 ## Архитектура
@@ -39,18 +47,18 @@ my-landing/
 11. FOOTER
 
 ## Telegram-бот (форма)
-- Token: `8732155312:AAGYtQXM7s6W5nnl2J0TFifRQArUXP8WGV0`
+- Token: хранится в `.env` (BOT_TOKEN)
 - Chat ID: `1457545952`
 - Bot: @lending8_bot
 - Формат: fetch POST → `api.telegram.org/bot.../sendMessage`
-- Fallback: при ошибке сети показывает ссылку на @samarina_parfum
+- Fallback: при ошибке сети показывает ссылку на @Samarina_Yuliya
 
 ## Контакты клиента
-- Telegram: https://t.me/samarina_parfum
+- Telegram: https://t.me/Samarina_Yuliya
 - Email: yuliya.samarina.84.84@mail.ru
 - Телефон: +7 919 830 89 56
 
-## Правила редактирования
+## Правила редактирования (лендинг)
 - Всё в одном файле `index.html` — не разбивать на отдельные CSS/JS файлы
 - Не добавлять внешние библиотеки (jQuery, Bootstrap и т.д.)
 - Картинки — относительные пути `img/...`
@@ -61,3 +69,58 @@ my-landing/
 - Год в футере: 2026
 - Статистика: 24 проекта (не 47)
 - hero.jpg → секция Hero, about.jpg → секция About (не путать!)
+
+---
+
+## Telegram Mini App (каталог услуг)
+
+### Концепция
+Цифровая визитка с каталогом услуг внутри Telegram. Клиент открывает бота → нажимает кнопку → видит услуги с ценами → оставляет заявку → Юлия получает сообщение.
+
+### Структура Mini App
+```
+mini-app/
+├── index.html              — единственный HTML-файл
+├── style.css               — стили (CSS-переменные TG-темы)
+├── app.js                  — SPA-логика (навигация, рендер, отправка)
+├── data/
+│   └── services.json       — каталог услуг
+└── img/
+    ├── avatar.webp         — фото Юлии (128x128)
+    └── portfolio/          — скриншоты работ (WebP, < 150KB)
+```
+
+### Экраны
+1. **Главная** — аватар, приветствие по имени, 4 карточки услуг с ценами, 2 отзыва
+2. **Детали услуги** — галерея работ, чеклист «что входит», варианты/тарифы, отзыв
+3. **Заявка** — 1 поле (описание задачи), имя из Telegram автоматически
+4. **Готово** — попап подтверждения + кнопка «Написать в Telegram»
+
+### Технический стек
+- **Vanilla JS** (без фреймворков) — загрузка < 1.5 сек
+- **CSS-переменные** из Telegram themeParams (авто-тема)
+- **Системные шрифты** (SF Pro / Roboto) — нативный look
+- **Данные** в `services.json` — легко редактировать
+- **Отправка заявок** через fetch → Telegram Bot API (тот же бот @lending8_bot)
+- **Хостинг** — Vercel (уже настроен)
+
+### Telegram Web App API
+- `tg.ready()` + `tg.expand()` — инициализация
+- `tg.MainButton` — нативная CTA-кнопка внизу
+- `tg.BackButton` — нативный «назад» (не делать свою кнопку!)
+- `tg.HapticFeedback` — вибрация на кнопки и подтверждения
+- `tg.initDataUnsafe.user` — имя, username пользователя
+- Навигация: стек экранов (без hash-роутера!)
+
+### Правила редактирования (Mini App)
+- Mini App — отдельная папка `mini-app/`, НЕ в index.html лендинга
+- Без тяжёлых фреймворков (React, Vue) — только Vanilla JS
+- Изображения только WebP, < 150KB каждое
+- Минимум 48px для тач-зон (кнопки, карточки)
+- `padding-bottom: 100px` на экранах с MainButton (iOS перекрытие)
+- Версионирование файлов для обхода кэша TG (`app.js?v=2`)
+- Язык контента: русский
+
+### Документация
+- `research.md` — исследование Mini Apps (5 примеров + экспертная оценка UX/маркетинг/TG-dev)
+- `brief.md` — пошаговый план разработки (экраны, элементы, переходы, данные, план на 5 дней)

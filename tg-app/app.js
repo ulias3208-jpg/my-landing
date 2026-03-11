@@ -9,10 +9,10 @@
 // --- Конфигурация ---
 const CONFIG = {
   // Telegram-бот для отправки заявок
-  botToken: '8732155312:AAGYtQXM7s6W5nnl2J0TFifRQArUXP8WGV0',
+  botToken: '8661549195:AAGw5GRJCCZjuXVC_e31Jwdj1BqBjvMWCXo',
   chatId: '1457545952',
   // Ссылка на Telegram Юлии
-  telegramLink: 'https://t.me/samarina_parfum',
+  telegramLink: 'https://t.me/Samarina_Yuliya',
 };
 
 // --- Инициализация Telegram Web App ---
@@ -192,7 +192,7 @@ function renderMain() {
 
   return `
     <div class="profile fade-up">
-      <div class="profile__avatar"><img src="../img/hero.jpg" alt="Юлия Самарина"></div>
+      <div class="profile__avatar"><img src="img/avatar.jpg" alt="Юлия Самарина"></div>
       <div class="profile__info">
         <div class="profile__name">Юлия Самарина</div>
         <div class="profile__role">Вайбкодер и AI-креатор</div>
@@ -212,6 +212,10 @@ function renderMain() {
 
     <button class="tg-button fade-up" id="btn-contact">
       💬 Написать в Telegram
+    </button>
+
+    <button class="tg-button tg-button--share fade-up" id="btn-share">
+      🔗 Поделиться с другом
     </button>
   `;
 }
@@ -426,6 +430,12 @@ function bindEvents(screen) {
           tg.openTelegramLink(CONFIG.telegramLink);
         });
       }
+
+      // Кнопка «Поделиться с другом»
+      const shareBtn = document.getElementById('btn-share');
+      if (shareBtn) {
+        shareBtn.addEventListener('click', shareBotLink);
+      }
       break;
 
     case 'detail':
@@ -513,12 +523,13 @@ function getFallbackServices() {
   return [
     {
       id: 'sites', icon: '🖥', name: 'Сайты и лендинги',
-      price_from: 5000, price_label: 'от 5 000 ₽', projects_count: 4,
+      price_from: 1500, price_label: 'от 1 500 ₽', projects_count: 4,
       description: 'Конверсионные сайты и лендинги с помощью AI — быстро, красиво и по делу.',
       includes: ['Дизайн + вёрстка', 'Мобильная версия', 'Деплой', '30 дней поддержки'],
       variants: [
+        { name: 'Электронная визитка', price: 'от 1 500 ₽', days: '1–3 дня' },
         { name: 'Лендинг', price: 'от 5 000 ₽', days: '3–5 дней' },
-        { name: 'Корп. сайт', price: 'от 30 000 ₽', days: '7–14 дней' }
+        { name: 'Сайт: от персонального до корпоративного', price: 'от 30 000 ₽', days: '7–14 дней' }
       ],
       review: { text: 'Приятно иметь дело с профессионалом!', author: 'Анна К.' }
     },
@@ -555,5 +566,81 @@ function getFallbackServices() {
   ];
 }
 
+// --- ОНБОРДИНГ (показ один раз) ---
+
+function showOnboarding() {
+  if (localStorage.getItem('onboarding_seen')) {
+    showOffer();
+    return;
+  }
+
+  const overlay = document.getElementById('onboarding-overlay');
+  if (!overlay) { showOffer(); return; }
+
+  overlay.style.display = 'flex';
+
+  // Персонализация приветствия
+  const greetEl = document.getElementById('onboarding-greeting');
+  if (greetEl && userName !== 'друг') {
+    greetEl.textContent = userName + ', добро пожаловать!';
+  }
+
+  function closeOnboarding() {
+    localStorage.setItem('onboarding_seen', '1');
+    overlay.classList.add('closing');
+    haptic('impact', 'medium');
+    setTimeout(() => {
+      overlay.style.display = 'none';
+      overlay.classList.remove('closing');
+      showOffer();
+    }, 280);
+  }
+
+  document.getElementById('onboarding-start')?.addEventListener('click', closeOnboarding);
+}
+
+// --- ОФФЕР (показ один раз, после онбординга) ---
+
+function showOffer() {
+  if (localStorage.getItem('offer_seen')) return;
+
+  const overlay = document.getElementById('offer-overlay');
+  if (!overlay) return;
+
+  setTimeout(() => {
+    overlay.style.display = 'flex';
+  }, 400);
+
+  function closeOffer() {
+    localStorage.setItem('offer_seen', '1');
+    overlay.classList.add('closing');
+    setTimeout(() => {
+      overlay.style.display = 'none';
+      overlay.classList.remove('closing');
+    }, 280);
+  }
+
+  document.getElementById('offer-accept')?.addEventListener('click', () => {
+    haptic('notification', 'success');
+    closeOffer();
+  });
+
+  document.getElementById('offer-skip')?.addEventListener('click', () => {
+    haptic('impact', 'light');
+    closeOffer();
+  });
+
+  overlay.querySelector('.offer-backdrop')?.addEventListener('click', closeOffer);
+}
+
+// --- ПОДЕЛИТЬСЯ ---
+
+function shareBotLink() {
+  haptic('impact', 'medium');
+  const shareUrl = 'https://t.me/share/url?url=' + encodeURIComponent('https://t.me/Samarina28_bot') + '&text=' + encodeURIComponent('Посмотри — сайты, Mini Apps, AI-агенты и визуал от Юлии Самариной');
+  tg.openTelegramLink(shareUrl);
+}
+
 // --- ЗАПУСК ---
 loadServices();
+setTimeout(showOnboarding, 600);

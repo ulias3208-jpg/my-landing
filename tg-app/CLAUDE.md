@@ -51,7 +51,7 @@ tg-app/
 const CONFIG = {
   botToken: '...',
   chatId: '...',
-  telegramLink: 'https://t.me/samarina_parfum',
+  telegramLink: 'https://t.me/Samarina_Yuliya',
 };
 ```
 
