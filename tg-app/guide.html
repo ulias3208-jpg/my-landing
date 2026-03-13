@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Бесплатный гайд — Как создавать точные промпты</title>
+<meta name="description" content="Трёхуровневая система для новичков: база, конструкция, управление качеством. Бесплатный гайд от Юлии Самариной.">
+<style>
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #1a1a2e;
+  --bg-card: #16213e;
+  --bg-highlight: #0f3460;
+  --accent: #7c3aed;
+  --accent-light: #a78bfa;
+  --accent-glow: rgba(124, 58, 237, 0.15);
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --text-bright: #f8fafc;
+  --border: rgba(148, 163, 184, 0.12);
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===== HEADER ===== */
+.hero {
+  text-align: center;
+  padding: 48px 0 40px;
+  position: relative;
+}
+
+.hero::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  border-radius: 2px;
+  margin: 32px auto 0;
+}
+
+.badge {
+  display: inline-block;
+  background: var(--accent-glow);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  color: var(--accent-light);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text-bright);
+  margin-bottom: 16px;
+}
+
+.hero .subtitle {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ===== INTRO ===== */
+.intro-note {
+  background: var(--bg-card);
+  border-left: 3px solid var(--accent);
+  padding: 16px 20px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin: 0 0 40px;
+  font-size: 15px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ===== SECTIONS ===== */
+.section {
+  margin-bottom: 48px;
+}
+
+.section-divider {
+  width: 40px;
+  height: 2px;
+  background: var(--border);
+  margin: 48px auto;
+  border-radius: 1px;
+}
+
+.section-header {
+  margin-bottom: 20px;
+}
+
+.section-header .emoji {
+  font-size: 28px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.section-header h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-bright);
+  line-height: 1.3;
+}
+
+.section-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin-top: 28px;
+  margin-bottom: 12px;
+}
+
+p {
+  margin-bottom: 14px;
+  color: var(--text);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+.section-intro {
+  font-size: 15px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+/* ===== LEVEL BADGES ===== */
+.level-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-glow);
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent-light);
+  margin-bottom: 16px;
+}
+
+/* ===== LISTS ===== */
+.levels-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.levels-list li {
+  padding: 14px 16px;
+  background: var(--bg-card);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent);
+  font-size: 15px;
+}
+
+.levels-list li strong {
+  color: var(--accent-light);
+}
+
+/* ===== ERROR LIST ===== */
+.error-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.error-list li {
+  padding: 12px 16px;
+  padding-left: 44px;
+  position: relative;
+  background: rgba(239, 68, 68, 0.06);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(239, 68, 68, 0.1);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.error-list li::before {
+  content: '\274C';
+  position: absolute;
+  left: 14px;
+  top: 12px;
+  font-size: 14px;
+}
+
+/* ===== WARNING LIST ===== */
+.warning-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.warning-list li {
+  padding: 12px 16px;
+  padding-left: 44px;
+  position: relative;
+  background: rgba(245, 158, 11, 0.06);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(245, 158, 11, 0.1);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.warning-list li::before {
+  content: '\26A0\FE0F';
+  position: absolute;
+  left: 14px;
+  top: 12px;
+  font-size: 14px;
+}
+
+/* ===== QUESTION LIST ===== */
+.question-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.question-list li {
+  padding: 10px 16px;
+  padding-left: 40px;
+  position: relative;
+  font-size: 15px;
+  color: var(--text);
+}
+
+.question-list li::before {
+  content: '\1F4AC';
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  font-size: 14px;
+}
+
+/* ===== HIGHLIGHT BOX ===== */
+.highlight-box {
+  background: var(--accent-glow);
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin: 24px 0;
+}
+
+.highlight-box h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent-light);
+  margin-bottom: 14px;
+}
+
+.highlight-box p {
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.highlight-box ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.highlight-box ul li {
+  padding-left: 24px;
+  position: relative;
+  font-size: 15px;
+}
+
+.highlight-box ul li::before {
+  content: '?';
+  position: absolute;
+  left: 0;
+  color: var(--accent-light);
+  font-weight: 600;
+}
+
+.highlight-box .note {
+  font-size: 14px;
+  color: var(--accent-light);
+  font-weight: 600;
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+/* ===== ELEMENT CARDS ===== */
+.element-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.element-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  position: relative;
+  transition: border-color 0.2s;
+}
+
+.element-card:hover {
+  border-color: rgba(124, 58, 237, 0.3);
+}
+
+.element-card .num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.element-card .card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin-bottom: 6px;
+}
+
+.element-card .card-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* ===== CHIPS ===== */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.chip {
+  display: inline-block;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: var(--text);
+  transition: border-color 0.2s, background 0.2s;
+  cursor: default;
+}
+
+.chip:hover {
+  border-color: var(--accent);
+  background: var(--accent-glow);
+}
+
+/* ===== EXAMPLE PLACEHOLDERS ===== */
+.example-block {
+  background: var(--bg-card);
+  border: 1px dashed rgba(124, 58, 237, 0.3);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.example-block .example-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.example-block .example-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin-bottom: 6px;
+}
+
+.example-block .example-note {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+/* ===== PRACTICE STEPS ===== */
+.practice-steps {
+  list-style: none;
+  counter-reset: step;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.practice-steps li {
+  counter-increment: step;
+  padding: 14px 16px 14px 48px;
+  position: relative;
+  background: var(--bg-card);
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.practice-steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  width: 24px;
+  height: 24px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== TEMPLATE BLOCKS ===== */
+.template-block {
+  background: #0d1117;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 16px;
+  font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+  position: relative;
+}
+
+.template-block .template-label {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 4px;
+  margin-bottom: 14px;
+}
+
+.template-block p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.template-block .placeholder {
+  color: var(--accent-light);
+  font-style: italic;
+}
+
+/* ===== SUMMARY LIST ===== */
+.summary-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.summary-list li {
+  padding: 14px 16px;
+  padding-left: 44px;
+  position: relative;
+  background: var(--bg-card);
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.summary-list li::before {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  font-size: 16px;
+}
+
+.summary-list li:nth-child(1)::before { content: '1\FE0F\20E3'; }
+.summary-list li:nth-child(2)::before { content: '2\FE0F\20E3'; }
+.summary-list li:nth-child(3)::before { content: '3\FE0F\20E3'; }
+
+/* ===== BLOCKQUOTE ===== */
+.final-quote {
+  text-align: center;
+  padding: 40px 20px;
+  margin: 40px 0 32px;
+  position: relative;
+}
+
+.final-quote::before {
+  content: '\201C';
+  font-size: 72px;
+  color: var(--accent);
+  opacity: 0.3;
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.final-quote p {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-bright);
+  line-height: 1.6;
+  font-style: italic;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  text-align: center;
+  padding: 32px 0 48px;
+  border-top: 1px solid var(--border);
+}
+
+.footer .author {
+  font-size: 15px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.footer .author strong {
+  color: var(--text-bright);
+}
+
+.footer a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 24px;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.footer a:hover {
+  background: #6d28d9;
+  transform: translateY(-1px);
+}
+
+.footer a:active {
+  transform: translateY(0);
+}
+
+.footer a svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 22px;
+  }
+
+  .section-header h2 {
+    font-size: 20px;
+  }
+
+  .element-card {
+    padding: 16px;
+  }
+
+  .highlight-box {
+    padding: 18px;
+  }
+
+  .final-quote p {
+    font-size: 16px;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .chip:hover,
+  .element-card:hover,
+  .footer a:hover {
+    transition: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="badge">Бесплатный гайд</div>
+    <h1>Как создавать точные промпты и&nbsp;получать от&nbsp;ИИ результат, а&nbsp;не&nbsp;случайный ответ</h1>
+    <p class="subtitle">Трёхуровневая система для новичков: база&nbsp;&bull; конструкция&nbsp;&bull; управление качеством</p>
+  </header>
+
+  <!-- INTRO NOTE -->
+  <div class="intro-note">
+    Читайте по порядку и сразу проверяйте идеи на своей реальной задаче.
+  </div>
+
+  <!-- HOW TO READ -->
+  <section class="section">
+    <div class="section-header">
+      <span class="emoji">&#128214;</span>
+      <h2>Как читать этот гайд</h2>
+    </div>
+    <p>Материал выстроен по принципу нарастающей глубины. Сначала вы поймёте, почему нейросеть часто отвечает слабо. Затем разберёте конструкцию сильного промпта. И&nbsp;только после этого перейдёте к&nbsp;самому важному: как управлять качеством ответа, если первый результат получился средним.</p>
+    <ul class="levels-list">
+      <li><strong>Уровень 1 &mdash; База:</strong> почему слабый запрос даёт слабый ответ.</li>
+      <li><strong>Уровень 2 &mdash; Конструкция:</strong> из каких элементов собирается сильный промпт.</li>
+      <li><strong>Уровень 3 &mdash; Управление качеством:</strong> как уточнять, усиливать и доводить ответ до нужного уровня.</li>
+    </ul>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- LEVEL 1 -->
+  <section class="section">
+    <div class="section-header">
+      <span class="level-badge">&#127919; Уровень 1</span>
+      <h2>База</h2>
+    </div>
+
+    <h3>Что такое промпт</h3>
+    <p>Промпт&nbsp;&mdash; это запрос, инструкция или задача, которую вы даёте нейросети. Проще говоря, это способ объяснить ИИ, что именно вам нужно.</p>
+
+    <h3>Почему ИИ часто отвечает слабо</h3>
+    <ul class="error-list">
+      <li>В запросе нет ясности&nbsp;&mdash; задача звучит туманно, и ИИ достраивает её сам.</li>
+      <li>Не указана цель&nbsp;&mdash; непонятно, нужно объяснить, продать, вовлечь или структурировать.</li>
+      <li>Не указана аудитория&nbsp;&mdash; текст для новичка и текст для эксперта звучат по-разному.</li>
+      <li>Нет контекста&nbsp;&mdash; нейросеть выбирает самый типичный и безопасный вариант.</li>
+      <li>Не задан формат&nbsp;&mdash; пост, урок, письмо и сценарий требуют разной подачи.</li>
+      <li>Не указан стиль&nbsp;&mdash; ответ легко становится сухим, банальным или слишком рекламным.</li>
+      <li>Нет ограничений&nbsp;&mdash; ИИ добавляет воду, клише и лишнюю теорию.</li>
+    </ul>
+
+    <div class="highlight-box">
+      <h4>&#128161; Мини-упражнение</h4>
+      <p>Посмотрите на свой обычный запрос к ИИ и проверьте его по четырём вопросам:</p>
+      <ul>
+        <li>Понятно ли из него, что именно я хочу получить?</li>
+        <li>Понятно ли, зачем мне это?</li>
+        <li>Понятно ли, для кого это создаётся?</li>
+        <li>Есть ли в запросе рамки и ориентиры?</li>
+      </ul>
+      <p class="note">Если хотя бы на два вопроса ответ &laquo;нет&raquo;, значит, промпт уже можно усилить.</p>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- LEVEL 2 -->
+  <section class="section">
+    <div class="section-header">
+      <span class="level-badge">&#128736;&#65039; Уровень 2</span>
+      <h2>Конструкция</h2>
+    </div>
+    <p class="section-intro">Сильный промпт&nbsp;&mdash; это не &laquo;умный текст&raquo; и не длинная формулировка ради длины. Это ясная конструкция.</p>
+
+    <div class="element-cards">
+      <div class="element-card">
+        <div class="num">1</div>
+        <div class="card-title">Роль</div>
+        <p class="card-desc">Кем должен быть ИИ в этой задаче: копирайтер, маркетолог, редактор, методолог, аналитик, сценарист. Роль задаёт способ мышления.</p>
+      </div>
+      <div class="element-card">
+        <div class="num">2</div>
+        <div class="card-title">Задача</div>
+        <p class="card-desc">Что именно нужно сделать: написать, проанализировать, переписать, сократить, адаптировать, собрать, объяснить.</p>
+      </div>
+      <div class="element-card">
+        <div class="num">3</div>
+        <div class="card-title">Контекст</div>
+        <p class="card-desc">В какой ситуации используется задача: пост для Telegram, урок для новичков, описание услуги, карточка товара, анонс запуска.</p>
+      </div>
+      <div class="element-card">
+        <div class="num">4</div>
+        <div class="card-title">Аудитория</div>
+        <p class="card-desc">Для кого создаётся результат: новички, предприниматели, эксперты, клиенты премиального сегмента.</p>
+      </div>
+      <div class="element-card">
+        <div class="num">5</div>
+        <div class="card-title">Формат</div>
+        <p class="card-desc">В каком виде нужен ответ: пост, инструкция, урок, письмо, таблица, сценарий, тезисы, чек-лист.</p>
+      </div>
+      <div class="element-card">
+        <div class="num">6</div>
+        <div class="card-title">Стиль</div>
+        <p class="card-desc">Как должен звучать ответ: живо, понятно, без воды, без пафоса, без рекламных штампов, с ясной логикой.</p>
+      </div>
+      <div class="element-card">
+        <div class="num">7</div>
+        <div class="card-title">Ограничения</div>
+        <p class="card-desc">Чего в ответе быть не должно: клише, банальностей, сложной терминологии, лишней теории, агрессивных продаж.</p>
+      </div>
+      <div class="element-card">
+        <div class="num">8</div>
+        <div class="card-title">Результат</div>
+        <p class="card-desc">Какой эффект должен получиться: чтобы стало понятно, захотелось дочитать, можно было сразу применить, появился интерес к теме.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- LEVEL 3 -->
+  <section class="section">
+    <div class="section-header">
+      <span class="level-badge">&#127942; Уровень 3</span>
+      <h2>Управление качеством</h2>
+    </div>
+    <p class="section-intro">Большинство людей думают, что промпт&nbsp;&mdash; это один запрос, после которого нужно либо принять ответ, либо разочароваться. Но сильная работа с ИИ устроена иначе.</p>
+
+    <h3>Первый ответ&nbsp;&mdash; не всегда финал</h3>
+    <p>Первый ответ ИИ&nbsp;&mdash; это часто черновик, который можно быстро сделать сильнее. Если воспринимать его как окончательный, вы теряете половину пользы от инструмента.</p>
+
+    <h3>Что делать, если вы не знаете, как написать хороший промпт</h3>
+    <p>Если вам сложно сразу превратить задачу в сильный запрос, не нужно мучиться. Можно использовать ИИ не только как исполнителя, но и как помощника по формулировке.</p>
+    <p>Такой подход особенно полезен тем, кто пока не привык мыслить через структуру запроса.</p>
+
+    <h3>Какие вопросы ИИ может задать вам</h3>
+    <ul class="question-list">
+      <li>Что именно вы хотите получить?</li>
+      <li>Где вы будете использовать результат?</li>
+      <li>Для какой аудитории это создаётся?</li>
+      <li>Какой формат вам нужен?</li>
+      <li>Какой стиль подходит лучше?</li>
+      <li>Что точно не должно появиться в ответе?</li>
+      <li>Есть ли пример того, что вам нравится?</li>
+      <li>Какой итог вы хотите получить?</li>
+    </ul>
+
+    <h3>Как усиливать уже полученный ответ</h3>
+    <div class="chips">
+      <span class="chip">Сделай менее банально</span>
+      <span class="chip">Убери воду</span>
+      <span class="chip">Добавь конкретики</span>
+      <span class="chip">Сократи на 30%</span>
+      <span class="chip">Усиль начало</span>
+      <span class="chip">Сделай структуру яснее</span>
+      <span class="chip">Перепиши живее</span>
+      <span class="chip">Убери штампы</span>
+      <span class="chip">Сделай тоньше и точнее</span>
+      <span class="chip">Дай 3 варианта с разной подачей</span>
+      <span class="chip">Адаптируй под Telegram / сайт / урок / сторис</span>
+      <span class="chip">Сохрани смысл, но сделай сильнее</span>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- EXAMPLES -->
+  <section class="section">
+    <div class="section-header">
+      <span class="emoji">&#128196;</span>
+      <h2>Готовые примеры сильных промптов</h2>
+    </div>
+    <p class="section-intro">Ниже&nbsp;&mdash; три прикладных примера: текст, визуал и анализ. Смотрите не только на содержание, но и на конструкцию.</p>
+
+    <div class="example-block">
+      <div class="example-icon">&#9997;&#65039;</div>
+      <div class="example-title">Пример промпта для текста</div>
+      <p class="example-note">Смотрите в полной версии курса</p>
+    </div>
+    <div class="example-block">
+      <div class="example-icon">&#127912;</div>
+      <div class="example-title">Пример промпта для визуала</div>
+      <p class="example-note">Смотрите в полной версии курса</p>
+    </div>
+    <div class="example-block">
+      <div class="example-icon">&#128202;</div>
+      <div class="example-title">Пример промпта для анализа</div>
+      <p class="example-note">Смотрите в полной версии курса</p>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- PRACTICE -->
+  <section class="section">
+    <div class="highlight-box">
+      <h4>&#128640; Практика</h4>
+      <p>Возьмите одну реальную задачу из своей работы. Например: написать пост, сделать описание услуги, придумать название, улучшить текст, собрать структуру урока, составить сценарий или придумать визуальную идею.</p>
+      <ol class="practice-steps">
+        <li>Напишите ИИ: &laquo;Помоги мне составить точный промпт для моей задачи. Сначала задай мне вопросы по одному, чтобы уточнить цель, аудиторию, формат, стиль, ограничения и результат. После этого собери для меня готовый сильный промпт&raquo;.</li>
+        <li>Ответьте на вопросы и получите итоговый промпт.</li>
+        <li>Попросите ИИ выполнить этот промпт.</li>
+        <li>Посмотрите, чего не хватает, и дайте уточнения: что усилить, что убрать, что адаптировать.</li>
+        <li>Сравните результат с тем, который вы получили бы при коротком и общем запросе.</li>
+      </ol>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- COMMON MISTAKES -->
+  <section class="section">
+    <div class="section-header">
+      <span class="emoji">&#9888;&#65039;</span>
+      <h2>Частые ошибки новичков</h2>
+    </div>
+    <ul class="warning-list">
+      <li>Писать слишком общо: &laquo;Напиши красиво&raquo;&nbsp;&mdash; не задача.</li>
+      <li>Не задавать цель: без неё ответ становится усреднённым.</li>
+      <li>Не учитывать аудиторию: текст получается обезличенным.</li>
+      <li>Не задавать ограничения: клише и банальности появляются сами.</li>
+      <li>Ждать идеала с первого раза: первый ответ&nbsp;&mdash; часто только основа.</li>
+      <li>Пытаться сделать промпт умным, а не точным: сложность формулировки не равна качеству.</li>
+    </ul>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- SUMMARY -->
+  <section class="section">
+    <div class="section-header">
+      <span class="emoji">&#127775;</span>
+      <h2>Итог</h2>
+    </div>
+    <p>Теперь у вас есть не просто представление о промптах, а трёхуровневая система понимания.</p>
+    <ul class="summary-list">
+      <li>На первом уровне вы увидели, что слабый ответ обычно связан с неточно поставленной задачей.</li>
+      <li>На втором уровне вы разобрали конструкцию сильного промпта и его ключевые элементы.</li>
+      <li>На третьем уровне вы поняли, что качеством ответа можно управлять через уточнения, ограничения и диалог с ИИ.</li>
+    </ul>
+  </section>
+
+  <!-- TEMPLATES -->
+  <section class="section">
+    <div class="template-block">
+      <div class="template-label">Шаблон 1</div>
+      <p><strong style="color: var(--text-bright);">Шаблон, который можно сохранить</strong></p>
+      <br>
+      <p>Ты&nbsp;&mdash; <span class="placeholder">[роль]</span>. Напиши <span class="placeholder">[задача]</span> для <span class="placeholder">[контекст]</span>.<br>
+      Аудитория: <span class="placeholder">[кто будет читать]</span>.<br>
+      Формат: <span class="placeholder">[пост / инструкция / письмо / ...]</span>.<br>
+      Стиль: <span class="placeholder">[живо / по-деловому / ...]</span>.<br>
+      Ограничения: <span class="placeholder">[без воды / без клише / ...]</span>.<br>
+      Результат: <span class="placeholder">[что должен почувствовать или сделать читатель]</span>.</p>
+    </div>
+
+    <div class="template-block">
+      <div class="template-label">Шаблон 2</div>
+      <p><strong style="color: var(--text-bright);">Если вы не знаете, как сформулировать запрос</strong></p>
+      <br>
+      <p>Помоги мне составить точный промпт для моей задачи.<br>
+      Сначала задай мне вопросы по одному, чтобы уточнить: цель, аудиторию, формат, стиль, ограничения и ожидаемый результат.<br>
+      После этого собери для меня готовый сильный промпт.<br><br>
+      <span class="placeholder">Моя задача: [опишите кратко, что хотите получить]</span></p>
+    </div>
+  </section>
+
+  <!-- FINAL QUOTE -->
+  <div class="final-quote">
+    <p>&laquo;Хороший промпт&nbsp;&mdash; это не попытка впечатлить ИИ. Это умение ясно мыслить, точно ставить задачу и&nbsp;управлять качеством ответа.&raquo;</p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p class="author"><strong>Юлия Самарина</strong>&nbsp;&mdash; AI-ментор</p>
+    <a href="https://t.me/Samarina_Yuliya" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+      Написать в Telegram
+    </a>
+  </footer>
+
+</div>
+
+</body>
+</html>
