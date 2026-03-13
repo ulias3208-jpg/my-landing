@@ -29,8 +29,10 @@ const userId = user.id || 0;
 
 // --- Состояние приложения ---
 let services = [];
+let portfolio = [];          // Портфолио
 let screenStack = ['main']; // Стек навигации
 let currentService = null;  // Выбранная услуга
+let currentPortfolioItem = null; // Выбранный элемент портфолио
 let selectedVariant = 0;    // Выбранный вариант/тариф
 let mainButtonAction = null; // Текущее действие MainButton
 
@@ -45,9 +47,17 @@ async function loadServices() {
     const data = await res.json();
     services = data.services;
   } catch (e) {
-    // Fallback: данные встроены
     console.warn('Не удалось загрузить services.json, используем fallback');
     services = getFallbackServices();
+  }
+  // Загружаем портфолио
+  try {
+    const res = await fetch('data/portfolio.json');
+    const data = await res.json();
+    portfolio = data.categories;
+  } catch (e) {
+    console.warn('Не удалось загрузить portfolio.json');
+    portfolio = [];
   }
   renderScreen('main');
 }
@@ -120,6 +130,14 @@ function renderScreen(name, direction, data) {
       tg.MainButton.hideProgress();
       mainButtonAction = submitOrder;
       break;
+    case 'portfolio':
+      html = renderPortfolio();
+      tg.MainButton.hide();
+      break;
+    case 'portfolio-detail':
+      html = renderPortfolioDetail();
+      tg.MainButton.hide();
+      break;
   }
 
   const newScreen = document.createElement('div');
@@ -172,7 +190,6 @@ function renderMain() {
         <div class="service-card__name">${s.name}</div>
         <div class="service-card__meta">
           <span class="service-card__price">${s.price_label}</span>
-          <span class="service-card__count">· ${s.projects_count} ${pluralize(s.projects_count, 'проект', 'проекта', 'проектов')}</span>
         </div>
       </div>
       <span class="service-card__arrow">›</span>
@@ -204,6 +221,15 @@ function renderMain() {
     <p class="greeting__sub fade-up">Выбери, что тебе нужно:</p>
 
     ${cards}
+
+    <button class="portfolio-btn fade-up" id="btn-portfolio">
+      <span class="portfolio-btn__icon">🖼</span>
+      <span class="portfolio-btn__text">
+        <span class="portfolio-btn__title">Портфолио</span>
+        <span class="portfolio-btn__sub">Примеры работ</span>
+      </span>
+      <span class="service-card__arrow">›</span>
+    </button>
 
     <div class="reviews-section">
       <div class="section-title fade-up">Что говорят клиенты</div>
@@ -436,6 +462,42 @@ function bindEvents(screen) {
       if (shareBtn) {
         shareBtn.addEventListener('click', shareBotLink);
       }
+
+      // Кнопка «Портфолио»
+      const portfolioBtn = document.getElementById('btn-portfolio');
+      if (portfolioBtn) {
+        portfolioBtn.addEventListener('click', () => {
+          haptic('impact', 'light');
+          navigate('portfolio');
+        });
+      }
+      break;
+
+    case 'portfolio':
+      document.querySelectorAll('.portfolio-card').forEach(card => {
+        card.addEventListener('click', () => {
+          haptic('impact', 'light');
+          const type = card.dataset.type;
+          if (type === 'link') {
+            tg.openLink(card.dataset.url);
+            return;
+          }
+          if (type === 'video') {
+            tg.openTelegramLink(card.dataset.url);
+            return;
+          }
+          // Найти элемент по id
+          const itemId = card.dataset.id;
+          for (const cat of portfolio) {
+            const found = cat.items.find(it => it.id === itemId);
+            if (found) {
+              currentPortfolioItem = found;
+              navigate('portfolio-detail');
+              return;
+            }
+          }
+        });
+      });
       break;
 
     case 'detail':
@@ -486,6 +548,71 @@ function updateMainButton() {
   tg.MainButton.show();
 }
 
+// --- ЭКРАН: ПОРТФОЛИО ---
+
+function renderPortfolio() {
+  const sections = portfolio.map(cat => {
+    const items = cat.items.map(item => {
+      const thumb = item.image || (item.images && item.images[0]) || '';
+      const isLink = item.type === 'link';
+      const isVideo = item.type === 'video';
+      const hasUrl = isLink || isVideo;
+      return `
+        <div class="portfolio-card fade-up" data-id="${item.id}" data-type="${item.type}" ${hasUrl ? `data-url="${item.url}"` : ''}>
+          <div class="portfolio-card__thumb${isVideo ? ' portfolio-card__thumb--video' : ''}" ${thumb ? `style="background-image:url(${thumb})"` : ''}>
+            ${!thumb && !isVideo ? '<span class="portfolio-card__placeholder">' + (isLink ? '🌐' : '🎨') + '</span>' : ''}
+            ${isVideo ? '<span class="portfolio-card__play">▶</span>' : ''}
+            ${isLink ? '<span class="portfolio-card__badge">Открыть сайт ↗</span>' : ''}
+            ${isVideo ? '<span class="portfolio-card__badge">Смотреть видео</span>' : ''}
+            ${item.images && item.images.length > 1 ? '<span class="portfolio-card__count">' + item.images.length + ' фото</span>' : ''}
+          </div>
+          <div class="portfolio-card__info">
+            <div class="portfolio-card__title">${item.title}</div>
+            <div class="portfolio-card__subtitle">${item.subtitle}</div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    return `
+      <div class="portfolio-section fade-up">
+        <div class="portfolio-section__header">${cat.icon} ${cat.name}</div>
+        <div class="portfolio-grid">${items}</div>
+      </div>
+    `;
+  }).join('');
+
+  return `
+    <div class="screen-header fade-up">
+      <h1 class="screen-title">Портфолио</h1>
+      <p class="screen-subtitle">Примеры работ для клиентов</p>
+    </div>
+    ${sections}
+  `;
+}
+
+function renderPortfolioDetail() {
+  const item = currentPortfolioItem;
+  if (!item) return '<p>Работа не найдена</p>';
+
+  const images = item.images || [item.image];
+  const gallery = images.map(src => `
+    <div class="portfolio-detail__img fade-up">
+      <img src="${src}" alt="${item.title}" loading="lazy">
+    </div>
+  `).join('');
+
+  return `
+    <div class="screen-header fade-up">
+      <h1 class="screen-title">${item.title}</h1>
+      <p class="screen-subtitle">${item.subtitle}</p>
+    </div>
+    <div class="portfolio-detail__gallery">
+      ${gallery}
+    </div>
+  `;
+}
+
 // --- УТИЛИТЫ ---
 
 // Haptic feedback (с проверкой доступности)
@@ -523,7 +650,7 @@ function getFallbackServices() {
   return [
     {
       id: 'sites', icon: '🖥', name: 'Сайты и лендинги',
-      price_from: 1500, price_label: 'от 1 500 ₽', projects_count: 4,
+      price_from: 1500, price_label: 'от 1 500 ₽',
       description: 'Конверсионные сайты и лендинги с помощью AI — быстро, красиво и по делу.',
       includes: ['Дизайн + вёрстка', 'Мобильная версия', 'Деплой', '30 дней поддержки'],
       variants: [
@@ -535,7 +662,7 @@ function getFallbackServices() {
     },
     {
       id: 'miniapps', icon: '📱', name: 'Telegram Mini Apps',
-      price_from: 40000, price_label: 'от 40 000 ₽', projects_count: 2,
+      price_from: 40000, price_label: 'от 40 000 ₽',
       description: 'Приложения внутри Telegram — клиенты уже там.',
       includes: ['Каталоги', 'Лояльность', 'Запись', 'Интеграция с ботом'],
       variants: [{ name: 'Mini App MVP', price: 'от 40 000 ₽', days: '14–21 день' }],
@@ -543,7 +670,7 @@ function getFallbackServices() {
     },
     {
       id: 'agents', icon: '🤖', name: 'AI-агенты',
-      price_from: 20000, price_label: 'от 20 000 ₽', projects_count: 3,
+      price_from: 20000, price_label: 'от 20 000 ₽',
       description: 'AI-системы для автоматизации — работают 24/7.',
       includes: ['Чат-боты', 'Автоматизация', 'CRM-интеграции', 'Настройка'],
       variants: [
@@ -554,7 +681,7 @@ function getFallbackServices() {
     },
     {
       id: 'visual', icon: '🎨', name: 'Нейрофотосессии и визуал',
-      price_from: 3000, price_label: 'от 3 000 ₽', projects_count: 5,
+      price_from: 3000, price_label: 'от 3 000 ₽',
       description: 'AI-ролики и визуал — от сниппета до рекламной кампании.',
       includes: ['Нейрофотосессии', 'AI-ролики', 'Рекламный визуал', 'Сториз'],
       variants: [

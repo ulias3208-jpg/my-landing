@@ -1,0 +1,88 @@
+{
+  "categories": [
+    {
+      "id": "visual",
+      "name": "Нейрофотосессии и визуал",
+      "icon": "🎨",
+      "items": [
+        {
+          "id": "ai-profile",
+          "title": "AI-профайл",
+          "subtitle": "Нейрофотосессия для личного бренда",
+          "image": "img/portfolio/ai-profile.jpg",
+          "type": "image"
+        },
+        {
+          "id": "bvlgari",
+          "title": "Продуктовый визуал BVLGARI",
+          "subtitle": "AI-съёмка парфюмерии Le Gemme Tygar",
+          "images": [
+            "img/portfolio/bvlgari-1.jpg",
+            "img/portfolio/bvlgari-2.jpg",
+            "img/portfolio/bvlgari-3.jpg"
+          ],
+          "type": "gallery"
+        },
+        {
+          "id": "fashion-bw",
+          "title": "Фешн-портрет",
+          "subtitle": "Чёрно-белая AI-фотосессия",
+          "image": "img/portfolio/fashion-bw.jpg",
+          "type": "image"
+        },
+        {
+          "id": "komarova",
+          "title": "Светлана Комарова",
+          "subtitle": "Деловой AI-портрет для риэлтора",
+          "image": "img/portfolio/komarova.jpg",
+          "type": "image"
+        },
+        {
+          "id": "svyatoslav",
+          "title": "Святослав М",
+          "subtitle": "AI-визуал для музыканта",
+          "images": [
+            "img/portfolio/svyatoslav-1.jpg",
+            "img/portfolio/svyatoslav-2.jpg"
+          ],
+          "type": "gallery"
+        },
+        {
+          "id": "video-1",
+          "title": "AI-ролик",
+          "subtitle": "Сниппет для соцсетей",
+          "url": "https://t.me/turbo_maraphon/51",
+          "type": "video"
+        },
+        {
+          "id": "video-2",
+          "title": "AI-ролик",
+          "subtitle": "Рекламный сниппет",
+          "url": "https://t.me/turbo_maraphon/52",
+          "type": "video"
+        }
+      ]
+    },
+    {
+      "id": "sites",
+      "name": "Сайты и лендинги",
+      "icon": "🖥",
+      "items": [
+        {
+          "id": "vizitka-svyatoslav",
+          "title": "Визитка Святослава",
+          "subtitle": "Электронная визитка ведущего",
+          "url": "https://svyatoslav-vizitka.vercel.app",
+          "type": "link"
+        },
+        {
+          "id": "vizitka-alina",
+          "title": "Визитка Алины",
+          "subtitle": "Электронная визитка",
+          "url": "https://alina-vizitka.vercel.app",
+          "type": "link"
+        }
+      ]
+    }
+  ]
+}
