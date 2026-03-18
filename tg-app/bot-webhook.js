@@ -12,7 +12,7 @@ const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_KEY = process.env.SUPABASE_SERVICE_KEY;
 
 const MINI_APP_URL = 'https://tg-app-iota-sage.vercel.app';
-const GUIDE_URL    = 'https://tg-app-iota-sage.vercel.app/guide.html';
+const GUIDE_URL    = 'https://tg-app-iota-sage.vercel.app/guide_prompts_yulia.pdf';
 const YULIA_LINK   = 'https://t.me/Samarina_Yuliya';
 
 const QUALIFY_KEYBOARD = {
