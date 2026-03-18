@@ -27,9 +27,7 @@
   --radius-sm: 8px;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
@@ -47,7 +45,7 @@ body {
   padding: 0 20px;
 }
 
-/* ===== HEADER ===== */
+/* ===== HERO ===== */
 .hero {
   text-align: center;
   padding: 48px 0 40px;
@@ -90,6 +88,13 @@ body {
   font-size: 16px;
   color: var(--text-muted);
   line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.hero .hero-desc {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
 }
 
 /* ===== INTRO ===== */
@@ -105,9 +110,7 @@ body {
 }
 
 /* ===== SECTIONS ===== */
-.section {
-  margin-bottom: 48px;
-}
+.section { margin-bottom: 48px; }
 
 .section-divider {
   width: 40px;
@@ -117,9 +120,7 @@ body {
   border-radius: 1px;
 }
 
-.section-header {
-  margin-bottom: 20px;
-}
+.section-header { margin-bottom: 20px; }
 
 .section-header .emoji {
   font-size: 28px;
@@ -142,14 +143,20 @@ body {
   margin-bottom: 12px;
 }
 
+h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin-top: 28px;
+  margin-bottom: 12px;
+}
+
 p {
   margin-bottom: 14px;
   color: var(--text);
 }
 
-p:last-child {
-  margin-bottom: 0;
-}
+p:last-child { margin-bottom: 0; }
 
 .section-intro {
   font-size: 15px;
@@ -189,8 +196,108 @@ p:last-child {
   font-size: 15px;
 }
 
-.levels-list li strong {
+.levels-list li strong { color: var(--accent-light); }
+
+/* ===== IDEA / CALLOUT BOXES ===== */
+.idea-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin: 24px 0;
+}
+
+.idea-box.accent {
+  background: var(--accent-glow);
+  border-color: rgba(124, 58, 237, 0.25);
+}
+
+.idea-box h4 {
+  font-size: 14px;
+  font-weight: 700;
   color: var(--accent-light);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.idea-box p {
+  font-size: 15px;
+  margin-bottom: 0;
+}
+
+/* ===== COMPARE TABLE ===== */
+.compare-table {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.compare-row {
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.compare-row.weak {
+  background: rgba(239, 68, 68, 0.06);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+}
+
+.compare-row.strong {
+  background: rgba(34, 197, 94, 0.06);
+  border: 1px solid rgba(34, 197, 94, 0.15);
+}
+
+.compare-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.compare-row.weak .compare-label { color: #f87171; }
+.compare-row.strong .compare-label { color: #4ade80; }
+
+/* ===== FORMULA ===== */
+.formula-box {
+  background: #0d1117;
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin: 20px 0;
+  font-size: 15px;
+  color: var(--accent-light);
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.8;
+}
+
+/* ===== FLOW ===== */
+.flow-box {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 16px 20px;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  margin: 16px 0;
+}
+
+.flow-step {
+  color: var(--accent-light);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.flow-arrow {
+  color: var(--text-muted);
+  font-size: 14px;
 }
 
 /* ===== ERROR LIST ===== */
@@ -307,7 +414,7 @@ p:last-child {
 }
 
 .highlight-box ul li::before {
-  content: '?';
+  content: '→';
   position: absolute;
   left: 0;
   color: var(--accent-light);
@@ -335,13 +442,10 @@ p:last-child {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 20px;
-  position: relative;
   transition: border-color 0.2s;
 }
 
-.element-card:hover {
-  border-color: rgba(124, 58, 237, 0.3);
-}
+.element-card:hover { border-color: rgba(124, 58, 237, 0.3); }
 
 .element-card .num {
   display: inline-flex;
@@ -396,34 +500,6 @@ p:last-child {
   background: var(--accent-glow);
 }
 
-/* ===== EXAMPLE PLACEHOLDERS ===== */
-.example-block {
-  background: var(--bg-card);
-  border: 1px dashed rgba(124, 58, 237, 0.3);
-  border-radius: var(--radius);
-  padding: 32px 24px;
-  text-align: center;
-  margin-bottom: 14px;
-}
-
-.example-block .example-icon {
-  font-size: 32px;
-  margin-bottom: 12px;
-}
-
-.example-block .example-title {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text-bright);
-  margin-bottom: 6px;
-}
-
-.example-block .example-note {
-  font-size: 13px;
-  color: var(--text-muted);
-  margin-bottom: 0;
-}
-
 /* ===== PRACTICE STEPS ===== */
 .practice-steps {
   list-style: none;
@@ -468,7 +544,6 @@ p:last-child {
   border-radius: var(--radius);
   padding: 20px;
   margin-bottom: 16px;
-  font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
   position: relative;
 }
 
@@ -476,7 +551,6 @@ p:last-child {
   display: inline-block;
   background: var(--accent);
   color: #fff;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.05em;
@@ -486,10 +560,18 @@ p:last-child {
   margin-bottom: 14px;
 }
 
+.template-block .template-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin-bottom: 14px;
+}
+
 .template-block p {
   font-size: 14px;
   color: var(--text-muted);
-  line-height: 1.8;
+  line-height: 1.9;
+  font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
 }
 
 .template-block .placeholder {
@@ -571,9 +653,7 @@ p:last-child {
   margin-bottom: 12px;
 }
 
-.footer .author strong {
-  color: var(--text-bright);
-}
+.footer .author strong { color: var(--text-bright); }
 
 .footer a {
   display: inline-flex;
@@ -589,14 +669,8 @@ p:last-child {
   transition: background 0.2s, transform 0.15s;
 }
 
-.footer a:hover {
-  background: #6d28d9;
-  transform: translateY(-1px);
-}
-
-.footer a:active {
-  transform: translateY(0);
-}
+.footer a:hover { background: #6d28d9; transform: translateY(-1px); }
+.footer a:active { transform: translateY(0); }
 
 .footer a svg {
   width: 18px;
@@ -606,40 +680,18 @@ p:last-child {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 480px) {
-  .hero h1 {
-    font-size: 22px;
-  }
-
-  .section-header h2 {
-    font-size: 20px;
-  }
-
-  .element-card {
-    padding: 16px;
-  }
-
-  .highlight-box {
-    padding: 18px;
-  }
-
-  .final-quote p {
-    font-size: 16px;
-  }
-
-  .container {
-    padding: 0 16px;
-  }
+  .hero h1 { font-size: 22px; }
+  .section-header h2 { font-size: 20px; }
+  .element-card { padding: 16px; }
+  .highlight-box { padding: 18px; }
+  .final-quote p { font-size: 16px; }
+  .container { padding: 0 16px; }
+  .formula-box { font-size: 13px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  .chip:hover,
-  .element-card:hover,
-  .footer a:hover {
-    transition: none;
-  }
+  html { scroll-behavior: auto; }
+  .chip:hover, .element-card:hover, .footer a:hover { transition: none; }
 }
 </style>
 </head>
@@ -652,6 +704,7 @@ p:last-child {
     <div class="badge">Бесплатный гайд</div>
     <h1>Как создавать точные промпты и&nbsp;получать от&nbsp;ИИ результат, а&nbsp;не&nbsp;случайный ответ</h1>
     <p class="subtitle">Трёхуровневая система для новичков: база&nbsp;&bull; конструкция&nbsp;&bull; управление качеством</p>
+    <p class="hero-desc">Этот материал поможет вам перестать писать туманные запросы, понять логику сильного промпта и научиться управлять качеством ответа.</p>
   </header>
 
   <!-- INTRO NOTE -->
@@ -671,6 +724,11 @@ p:last-child {
       <li><strong>Уровень 2 &mdash; Конструкция:</strong> из каких элементов собирается сильный промпт.</li>
       <li><strong>Уровень 3 &mdash; Управление качеством:</strong> как уточнять, усиливать и доводить ответ до нужного уровня.</li>
     </ul>
+
+    <div class="idea-box accent" style="margin-top: 24px;">
+      <h4>&#128161; Главная идея</h4>
+      <p>Нейросеть не читает мысли. Чем яснее задача, тем выше шанс получить не случайный, а рабочий результат.</p>
+    </div>
   </section>
 
   <div class="section-divider"></div>
@@ -685,6 +743,22 @@ p:last-child {
     <h3>Что такое промпт</h3>
     <p>Промпт&nbsp;&mdash; это запрос, инструкция или задача, которую вы даёте нейросети. Проще говоря, это способ объяснить ИИ, что именно вам нужно.</p>
 
+    <div class="compare-table">
+      <div class="compare-row weak">
+        <span class="compare-label">❌ Слабый вариант</span>
+        «Напиши пост про мой урок».
+      </div>
+      <div class="compare-row strong">
+        <span class="compare-label">✅ Сильный вариант</span>
+        «Напиши Telegram-пост о бесплатном уроке по созданию точных промптов. Аудитория — эксперты и предприниматели, которые хотят использовать ИИ в работе, но пока получают слишком общие ответы. Цель — вызвать интерес. Стиль — живой, понятный, без воды и без шаблонных фраз».
+      </div>
+    </div>
+
+    <div class="idea-box">
+      <h4>Почему сильный вариант работает лучше</h4>
+      <p>Во втором варианте задаче уже заданы рамки: есть тема, аудитория, цель и стиль. Нейросети не приходится слишком много додумывать, поэтому ответ получается ближе к тому, что вам действительно нужно.</p>
+    </div>
+
     <h3>Почему ИИ часто отвечает слабо</h3>
     <ul class="error-list">
       <li>В запросе нет ясности&nbsp;&mdash; задача звучит туманно, и ИИ достраивает её сам.</li>
@@ -696,7 +770,12 @@ p:last-child {
       <li>Нет ограничений&nbsp;&mdash; ИИ добавляет воду, клише и лишнюю теорию.</li>
     </ul>
 
-    <div class="highlight-box">
+    <div class="idea-box" style="margin-top: 20px;">
+      <h4>Что важно понять</h4>
+      <p>Слабый ответ чаще всего не означает, что ИИ плохой. Обычно это сигнал, что задача была поставлена слишком общо.</p>
+    </div>
+
+    <div class="highlight-box" style="margin-top: 24px;">
       <h4>&#128161; Мини-упражнение</h4>
       <p>Посмотрите на свой обычный запрос к ИИ и проверьте его по четырём вопросам:</p>
       <ul>
@@ -718,6 +797,13 @@ p:last-child {
       <h2>Конструкция</h2>
     </div>
     <p class="section-intro">Сильный промпт&nbsp;&mdash; это не &laquo;умный текст&raquo; и не длинная формулировка ради длины. Это ясная конструкция.</p>
+
+    <div class="idea-box accent">
+      <h4>Формула сильного промпта</h4>
+      <p style="font-family: 'SF Mono', monospace; font-size: 14px; color: var(--accent-light); line-height: 1.9;">
+        роль + задача + контекст + аудитория + формат + стиль + ограничения + результат
+      </p>
+    </div>
 
     <div class="element-cards">
       <div class="element-card">
@@ -761,6 +847,40 @@ p:last-child {
         <p class="card-desc">Какой эффект должен получиться: чтобы стало понятно, захотелось дочитать, можно было сразу применить, появился интерес к теме.</p>
       </div>
     </div>
+
+    <h3>Базовый шаблон</h3>
+    <div class="template-block">
+      <p>Ты&nbsp;&mdash; <span class="placeholder">[роль]</span>.<br>
+      Твоя задача: <span class="placeholder">[что нужно сделать]</span>.<br>
+      Контекст: <span class="placeholder">[о чём речь и где это будет использоваться]</span>.<br>
+      Аудитория: <span class="placeholder">[для кого]</span>.<br>
+      Формат: <span class="placeholder">[в каком виде нужен результат]</span>.<br>
+      Стиль: <span class="placeholder">[как это должно звучать]</span>.<br>
+      Важно учесть: <span class="placeholder">[ограничения и акценты]</span>.<br>
+      Результат: <span class="placeholder">[какой эффект должен получиться]</span>.</p>
+    </div>
+
+    <h3>Пример: слабый и сильный промпт</h3>
+    <div class="compare-table">
+      <div class="compare-row weak">
+        <span class="compare-label">❌ Слабый вариант</span>
+        «Сделай урок про промпты».
+      </div>
+      <div class="compare-row strong">
+        <span class="compare-label">✅ Сильный вариант</span>
+        «Ты — методолог с опытом обучения взрослых. Создай текстовый урок для новичков на тему точных промптов. Урок должен быть понятным, логично выстроенным, без перегруза терминологией. Включи объяснение, почему ИИ отвечает слабо, из чего состоит сильный промпт, как просить ИИ помочь сформулировать запрос, один практический блок и выводы. Формат — цельный учебный текст, который ученик может прочитать самостоятельно. Стиль — ясный, живой, без воды и без сложных формулировок. Результат — после чтения человек должен уметь составить базовый сильный промпт».
+      </div>
+    </div>
+
+    <div class="idea-box">
+      <h4>Почему сильный вариант работает лучше</h4>
+      <p>Сильный вариант сразу задаёт уровень сложности, формат, структуру, стиль и ожидаемый результат. Это превращает абстрактную тему в внятную задачу.</p>
+    </div>
+
+    <div class="idea-box accent" style="margin-top: 16px;">
+      <h4>Главная мысль уровня 2</h4>
+      <p>Сильный промпт — это конструкция, а не вдохновение. Когда вы понимаете элементы, вы перестаёте писать хаотично.</p>
+    </div>
   </section>
 
   <div class="section-divider"></div>
@@ -773,11 +893,27 @@ p:last-child {
     </div>
     <p class="section-intro">Большинство людей думают, что промпт&nbsp;&mdash; это один запрос, после которого нужно либо принять ответ, либо разочароваться. Но сильная работа с ИИ устроена иначе.</p>
 
+    <div class="flow-box">
+      <span class="flow-step">постановка задачи</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">уточнение</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">доработка</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">усиление результата</span>
+    </div>
+
     <h3>Первый ответ&nbsp;&mdash; не всегда финал</h3>
     <p>Первый ответ ИИ&nbsp;&mdash; это часто черновик, который можно быстро сделать сильнее. Если воспринимать его как окончательный, вы теряете половину пользы от инструмента.</p>
 
     <h3>Что делать, если вы не знаете, как написать хороший промпт</h3>
     <p>Если вам сложно сразу превратить задачу в сильный запрос, не нужно мучиться. Можно использовать ИИ не только как исполнителя, но и как помощника по формулировке.</p>
+
+    <div class="template-block">
+      <div class="template-label">Рабочий запрос</div>
+      <p>Помоги мне составить точный промпт для моей задачи. Сначала задай мне вопросы по одному, чтобы уточнить цель, аудиторию, формат, стиль, ограничения и желаемый результат. Когда информации будет достаточно, собери для меня готовый сильный промпт.</p>
+    </div>
+
     <p>Такой подход особенно полезен тем, кто пока не привык мыслить через структуру запроса.</p>
 
     <h3>Какие вопросы ИИ может задать вам</h3>
@@ -807,6 +943,11 @@ p:last-child {
       <span class="chip">Адаптируй под Telegram / сайт / урок / сторис</span>
       <span class="chip">Сохрани смысл, но сделай сильнее</span>
     </div>
+
+    <div class="idea-box accent" style="margin-top: 24px;">
+      <h4>Важная формулировка</h4>
+      <p>Нормальная работа с ИИ — это не один вопрос. Это диалог, в котором вы шаг за шагом улучшаете результат.</p>
+    </div>
   </section>
 
   <div class="section-divider"></div>
@@ -819,20 +960,55 @@ p:last-child {
     </div>
     <p class="section-intro">Ниже&nbsp;&mdash; три прикладных примера: текст, визуал и анализ. Смотрите не только на содержание, но и на конструкцию.</p>
 
-    <div class="example-block">
-      <div class="example-icon">&#9997;&#65039;</div>
-      <div class="example-title">Пример промпта для текста</div>
-      <p class="example-note">Смотрите в полной версии курса</p>
+    <!-- Пример 1 -->
+    <h3>1. Промпт для текста</h3>
+    <div class="compare-table">
+      <div class="compare-row weak">
+        <span class="compare-label">❌ Слабый вариант</span>
+        «Напиши пост про мой урок».
+      </div>
+      <div class="compare-row strong">
+        <span class="compare-label">✅ Сильный вариант</span>
+        «Ты — копирайтер и маркетолог с опытом в образовательных продуктах. Напиши Telegram-пост-анонс бесплатного урока на тему "Как создавать точные промпты и получать от ИИ результат, а не случайный ответ". Аудитория — новички, эксперты и предприниматели, которые уже пробовали работать с нейросетями, но пока получают слишком общие или слабые ответы. Цель текста — вызвать интерес к теме и желание прочитать урок. Формат — цельный пост для Telegram. Стиль — живой, ясный, умный, без воды, без пафоса и без шаблонных рекламных фраз. Сделай сильное первое предложение, логичную подачу и понятный финал. Не используй избитые формулировки вроде "погрузитесь в мир", "уникальная возможность", "нейросети меняют мир". Результат — текст должен вызывать ощущение: "наконец-то мне объяснят это нормально и по делу"».
+      </div>
     </div>
-    <div class="example-block">
-      <div class="example-icon">&#127912;</div>
-      <div class="example-title">Пример промпта для визуала</div>
-      <p class="example-note">Смотрите в полной версии курса</p>
+    <div class="idea-box">
+      <h4>Почему сильный вариант работает лучше</h4>
+      <p>Здесь сразу видны цель, аудитория, формат, стиль, ограничения и ожидаемая реакция читателя. Ответу уже задано направление.</p>
     </div>
-    <div class="example-block">
-      <div class="example-icon">&#128202;</div>
-      <div class="example-title">Пример промпта для анализа</div>
-      <p class="example-note">Смотрите в полной версии курса</p>
+
+    <!-- Пример 2 -->
+    <h3>2. Промпт для визуала</h3>
+    <div class="compare-table">
+      <div class="compare-row weak">
+        <span class="compare-label">❌ Слабый вариант</span>
+        «Сделай красивую картинку про нейросети».
+      </div>
+      <div class="compare-row strong">
+        <span class="compare-label">✅ Сильный вариант</span>
+        «Ты — арт-директор и визуальный концепт-стратег. Создай детальный промпт для генерации премиального изображения на тему точного взаимодействия человека с искусственным интеллектом. В кадре должно быть современное рабочее пространство: ноутбук, мягкий интеллектуальный свет, чистая композиция, ощущение концентрации, ясности мышления и технологичной эстетики. Визуал должен передавать идею не хаоса, а точности, структуры и умного управления ИИ. Атмосфера — premium editorial, современный digital luxury, без футуристического перегруза и без банальных неоновых "роботов". Цветовая палитра — благородная, сдержанная, дорогая. Формат — вертикальный 4:5. Без текста в кадре, без перегруженного фона, без клишированных образов вроде светящихся голов, голограмм и абстрактных кибер-сеток. Результат — изображение должно выглядеть как визуал для сильного образовательного продукта про ИИ, а не как случайная иллюстрация про технологии».
+      </div>
+    </div>
+    <div class="idea-box">
+      <h4>Почему сильный вариант работает лучше</h4>
+      <p>Визуальная задача стала конкретной: у неё есть эстетика, атмосфера, композиция, формат и набор запретов. Именно это отличает сильный запрос от фразы «сделай красиво».</p>
+    </div>
+
+    <!-- Пример 3 -->
+    <h3>3. Промпт для анализа</h3>
+    <div class="compare-table">
+      <div class="compare-row weak">
+        <span class="compare-label">❌ Слабый вариант</span>
+        «Посмотри текст и улучши».
+      </div>
+      <div class="compare-row strong">
+        <span class="compare-label">✅ Сильный вариант</span>
+        «Ты — редактор и смысловой аналитик. Проанализируй мой текст как черновик для образовательного продукта. Покажи по пунктам: 1) где текст звучит банально, 2) где слишком много общих слов и мало конкретики, 3) где нарушена логика или теряется внимание читателя, 4) какие формулировки ослабляют доверие, 5) что стоит переписать в первую очередь. После анализа предложи улучшенную версию текста. Сохрани основную мысль, но сделай подачу яснее, сильнее и профессиональнее. Стиль итогового текста — понятный, живой, без воды, без инфошума и без шаблонных фраз. Не просто переписывай механически, а покажи, за счёт чего новая версия становится сильнее. Результат — я должна увидеть не только новый текст, но и логику улучшения».
+      </div>
+    </div>
+    <div class="idea-box">
+      <h4>Почему сильный вариант работает лучше</h4>
+      <p>Такой запрос просит не абстрактное «улучши», а полноценный разбор по критериям. Это уже работа на качество, а не на угадывание.</p>
     </div>
   </section>
 
@@ -885,29 +1061,32 @@ p:last-child {
       <li>На втором уровне вы разобрали конструкцию сильного промпта и его ключевые элементы.</li>
       <li>На третьем уровне вы поняли, что качеством ответа можно управлять через уточнения, ограничения и диалог с ИИ.</li>
     </ul>
+
+    <div class="idea-box accent" style="margin-top: 24px;">
+      <h4>Главная мысль, которую важно унести с собой</h4>
+      <p>Нейросеть не обязана понимать вас с полуслова. Но она может давать очень сильный результат, если вы умеете ясно ставить задачу. А если пока не умеете — можно использовать сам ИИ, чтобы прийти к этой ясности через вопросы и диалог.</p>
+    </div>
   </section>
 
   <!-- TEMPLATES -->
   <section class="section">
     <div class="template-block">
       <div class="template-label">Шаблон 1</div>
-      <p><strong style="color: var(--text-bright);">Шаблон, который можно сохранить</strong></p>
-      <br>
-      <p>Ты&nbsp;&mdash; <span class="placeholder">[роль]</span>. Напиши <span class="placeholder">[задача]</span> для <span class="placeholder">[контекст]</span>.<br>
-      Аудитория: <span class="placeholder">[кто будет читать]</span>.<br>
-      Формат: <span class="placeholder">[пост / инструкция / письмо / ...]</span>.<br>
-      Стиль: <span class="placeholder">[живо / по-деловому / ...]</span>.<br>
-      Ограничения: <span class="placeholder">[без воды / без клише / ...]</span>.<br>
-      Результат: <span class="placeholder">[что должен почувствовать или сделать читатель]</span>.</p>
+      <p class="template-title" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 15px; font-weight: 700; color: var(--text-bright); margin-bottom: 14px; font-style: normal;">Универсальный каркас</p>
+      <p>Ты&nbsp;&mdash; <span class="placeholder">[роль]</span>.<br>
+      Твоя задача: <span class="placeholder">[что нужно сделать]</span>.<br>
+      Контекст: <span class="placeholder">[о чём речь и где это будет использоваться]</span>.<br>
+      Аудитория: <span class="placeholder">[для кого]</span>.<br>
+      Формат: <span class="placeholder">[в каком виде нужен результат]</span>.<br>
+      Стиль: <span class="placeholder">[как это должно звучать]</span>.<br>
+      Важно учесть: <span class="placeholder">[ограничения и акценты]</span>.<br>
+      Результат: <span class="placeholder">[какой эффект должен получиться]</span>.</p>
     </div>
 
     <div class="template-block">
       <div class="template-label">Шаблон 2</div>
-      <p><strong style="color: var(--text-bright);">Если вы не знаете, как сформулировать запрос</strong></p>
-      <br>
-      <p>Помоги мне составить точный промпт для моей задачи.<br>
-      Сначала задай мне вопросы по одному, чтобы уточнить: цель, аудиторию, формат, стиль, ограничения и ожидаемый результат.<br>
-      После этого собери для меня готовый сильный промпт.<br><br>
+      <p class="template-title" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 15px; font-weight: 700; color: var(--text-bright); margin-bottom: 14px; font-style: normal;">Запрос на сборку промпта</p>
+      <p>Помоги мне составить точный промпт для моей задачи. Сначала задай мне вопросы по одному, чтобы уточнить цель, аудиторию, формат, стиль, ограничения и желаемый результат. Когда данных будет достаточно, собери для меня готовый сильный промпт.<br><br>
       <span class="placeholder">Моя задача: [опишите кратко, что хотите получить]</span></p>
     </div>
   </section>
